@@ -4,6 +4,8 @@
 #include "TimeMgr.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Rigidbody2D.h"
+
 Object::Object()
 	: m_pCollider(nullptr)
 	, m_vPos{}
@@ -32,6 +34,12 @@ void Object::CreateAnimator()
 {
 	m_pAnimator = new Animator;
 	m_pAnimator->m_pOwner = this;
+}
+
+void Object::CreateRigidbody2D()
+{
+	m_pRigidbody2D = new Rigidbody2D;
+	m_pRigidbody2D->m_pOwner = this;
 }
 
 void Object::Update()

@@ -1,6 +1,7 @@
 #pragma once
 class Collider;
 class Animator;
+class Rigidbody2D;
 class Object
 {
 public:
@@ -25,9 +26,9 @@ public:
 	Collider* GetCollider() const 
 	{ return m_pCollider; }
 	Animator* GetAnimator()
-	{
-		return m_pAnimator;
-	}
+	{ return m_pAnimator; }
+	Rigidbody2D* GetRigidbody2D()
+	{ return m_pRigidbody2D; }
 	const wstring& GetName() const { return m_strName; }
 	void SetName(wstring _name) { m_strName = _name; }
 	bool GetIsDead() const { return !m_IsAlive; }
@@ -37,12 +38,14 @@ private:
 public:
 	void CreateCollider();
 	void CreateAnimator();
+	void CreateRigidbody2D();
 private:
 	Vec2 m_vPos; // 위치
 	Vec2 m_vScale; // 크기
-	Collider* m_pCollider;
 	wstring m_strName; // 이름.
 	bool m_IsAlive;
+	Collider* m_pCollider;
 	Animator* m_pAnimator;
+	Rigidbody2D* m_pRigidbody2D;
 };
 

@@ -24,8 +24,9 @@ enum class OBJECT_GROUP
 {
 	DEFAULT,
 	PLAYER,
-	BULLET,
-	MONSTER,
+	OBJ,
+	DAMAGE_OBJ,
+	BOSS,
 	END = 30
 };
 
@@ -47,4 +48,15 @@ enum class EVENT_TYPE
 	CREATE_OBJECT,
 	SCENE_CHANGE,
 	END
+};
+
+enum class PLAYER_STATE
+{
+	Idle,
+	MoveLeft,
+	MoveRight,
+	JumpLeft,
+	JumpRight,
+	FallLeft,
+	FallRight,
 };

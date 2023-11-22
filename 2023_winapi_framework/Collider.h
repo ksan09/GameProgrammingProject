@@ -1,6 +1,11 @@
 #pragma once
 class Object;
 
+typedef struct RECTANGLE
+{
+	float left, top, right, bottom;
+}RECTANGLE;
+
 class Collider
 {
 public:
@@ -19,12 +24,14 @@ public:
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetOffSetPos(Vec2 _vOffsetPos) 
 	{ m_vOffsetPos = _vOffsetPos; }
+	
 	const Vec2& GetScale() const { return m_vScale; }
 	const Vec2& GetOffSetPos() const { return m_vOffsetPos; }
 	const Vec2& GetFinalPos() const 
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
 	const Object* GetObj() const { return m_pOwner; }
+	const RECTANGLE& GetRectangle() const { return { 0.f, 0.f, 0.f, 0.f }; }
 private:
 	UINT m_check;
 	Object* m_pOwner;
