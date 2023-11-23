@@ -10,9 +10,14 @@ public:
 	void LateUpdate();
 
 public:
+	const Vec2& GetVelocity() const { return m_velocity; }
 	void SetUseGravity(bool value) { m_gravity = value; }
 	void SetVelocity(Vec2 _velocity) { m_velocity = _velocity; }
+
+public:
 	void Stop() { m_velocity = { 0.f, 0.f }; }
+	void StopVeloX() { m_velocity.x = 0; }
+	void StopVeloY() { m_velocity.y = 0; }
 
 private:
 	void GroundCheck();

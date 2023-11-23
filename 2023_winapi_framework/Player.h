@@ -9,9 +9,11 @@ public:
     ~Player();
 public:
     void Update() override;
+    virtual void EnterCollision(Collider* _pOther) override;
+
     void Render(HDC _dc) override;
 private:
-    void CreateBullet();
+    void Jump();
 private:
     Texture* m_pTex;
 };

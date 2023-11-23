@@ -5,8 +5,8 @@
 
 Rigidbody2D::Rigidbody2D()
 	: m_useGravity(true)
-	, m_gravity(9.8f)
-	, m_velocity({0.f, 0.f})
+	, m_gravity(980.f)
+	, m_velocity()
 	, m_pOwner(nullptr)
 	, m_isFalling(false)
 	, m_isGrounded(false)
@@ -22,6 +22,7 @@ void Rigidbody2D::LateUpdate()
 	FallGravity(); // 중력 작용
 
 	m_isFalling = (m_velocity.y < 0);
+	CalculatePos();
 }
 
 void Rigidbody2D::GroundCheck()
@@ -32,11 +33,7 @@ void Rigidbody2D::GroundCheck()
 		return;
 	}
 
-	//
-
 	m_isGrounded = true;
-
-	//
 }
 
 void Rigidbody2D::FallGravity()
@@ -50,7 +47,7 @@ void Rigidbody2D::FallGravity()
 		return;
 	}
 
-	m_velocity.y -= m_gravity * fDT;
+	m_velocity.y += m_gravity * fDT;
 }
 
 void Rigidbody2D::CalculatePos()

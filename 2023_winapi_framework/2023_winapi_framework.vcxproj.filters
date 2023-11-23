@@ -160,6 +160,9 @@
     <ClInclude Include="Rigidbody2D.h">
       <Filter>Engine\07. Component</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDirCollider.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -249,6 +252,9 @@
     </ClCompile>
     <ClCompile Include="Rigidbody2D.cpp">
       <Filter>Engine\07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDirCollider.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

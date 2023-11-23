@@ -11,6 +11,7 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "Rigidbody2D.h"
 
 
 Player::Player()
@@ -21,25 +22,19 @@ Player::Player()
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	
-	// 엉엉엉 내 20분 ㅠㅠㅠ ㅁ날어;ㅣ남러;ㅁ나얼
 	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
+	GetAnimator()->CreateAnim(L"Player_Left", m_pTex, Vec2(0.f, 32.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 6, 0.2f);
+	GetAnimator()->CreateAnim(L"Player_Right", m_pTex, Vec2(192.f, 32.f),
+		Vec2(32.f, 32.f), Vec2(32.f, 0.f), 6, 0.2f);
+	GetAnimator()->PlayAnim(L"Player_Left", true);
 
+	CreateRigidbody2D();
 	//// 오프셋 건드리기
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
 	//// 하나만
@@ -56,51 +51,59 @@ Player::~Player()
 }
 void Player::Update()
 {
-	Vec2 vPos = GetPos();
+	Rigidbody2D* pRb = GetRigidbody2D();
+	Vec2 vVelo = pRb->GetVelocity();
 
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
-		vPos.x -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+		pRb->SetVelocity({ -200.f, vVelo.y });
+		GetAnimator()->PlayAnim(L"Player_Left", true);
 	}
-	if (KEY_PRESS(KEY_TYPE::RIGHT))
+	else if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
-		vPos.x += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+		pRb->SetVelocity({ 200.f, vVelo.y });
+		GetAnimator()->PlayAnim(L"Player_Right", true);
 	}
-	if (KEY_PRESS(KEY_TYPE::UP))
+	else
 	{
-		vPos.y -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Back", true);
+		pRb->SetVelocity({ 0.f, vVelo.y });
 	}
-	if (KEY_PRESS(KEY_TYPE::DOWN))
-	{
-		vPos.y += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Front", true);
-	}
+
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
-		CreateBullet();
 		ResMgr::GetInst()->Play(L"Shoot");
+		Jump();
 	}
-	if(KEY_PRESS(KEY_TYPE::CTRL))
-		GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
-	SetPos(vPos);
+
 	GetAnimator()->Update();
+	GetRigidbody2D()->LateUpdate();
 }
 
-void Player::CreateBullet()
+// 해주어야 할 것
+// 바닥에 닿으면 멈추기
+// 옆면에 닿으면 멈추기
+// 위험한 것에 옆면으로 닿으면 죽기
+// 위쪽으로 닿으면 떨어지기
+// 점프가능한 오브젝트에 닿으면 점프하기
+// 
+
+void Player::EnterCollision(Collider* _pOther)
 {
-	Bullet* pBullet = new Bullet;
-	Vec2 vBulletPos = GetPos();
-	vBulletPos.y -= GetScale().y / 2.f;
-	pBullet->SetPos(vBulletPos);
-	pBullet->SetScale(Vec2(25.f,25.f));
-//	pBullet->SetDir(M_PI / 4 * 7);
-//	pBullet->SetDir(120* M_PI / 180);
-	pBullet->SetDir(Vec2(-10.f,-15.f));
-	pBullet->SetName(L"Player_Bullet");
-	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+	const Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"Ground")
+	{
+		Rigidbody2D* pRigidbody2D = GetRigidbody2D();
+		pRigidbody2D->StopVeloY();
+	}
+
+}
+
+void Player::Jump()
+{
+	Rigidbody2D* pRb = GetRigidbody2D();
+	Vec2 vVelo = pRb->GetVelocity();
+
+	pRb->SetVelocity({vVelo.x, -500.f});
 }
 
 void Player::Render(HDC _dc)

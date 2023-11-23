@@ -1,11 +1,6 @@
 #pragma once
 class Object;
 
-typedef struct RECTANGLE
-{
-	float left, top, right, bottom;
-}RECTANGLE;
-
 class Collider
 {
 public:
@@ -31,7 +26,6 @@ public:
 	{ return m_vFinalPos; }
 	const UINT& GetID() const { return m_ID; }
 	const Object* GetObj() const { return m_pOwner; }
-	const RECTANGLE& GetRectangle() const { return { 0.f, 0.f, 0.f, 0.f }; }
 private:
 	UINT m_check;
 	Object* m_pOwner;

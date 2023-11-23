@@ -24,8 +24,10 @@ enum class OBJECT_GROUP
 {
 	DEFAULT,
 	PLAYER,
+	PLAYER_DIR_COL,
 	OBJ,
 	DAMAGE_OBJ,
+	DAMAGE_JUMPABLE_OBJ,
 	BOSS,
 	END = 30
 };
@@ -59,4 +61,9 @@ enum class PLAYER_STATE
 	JumpRight,
 	FallLeft,
 	FallRight,
+};
+
+enum class DIR
+{
+	LEFT, TOP, RIGHT, BOTTOM
 };
