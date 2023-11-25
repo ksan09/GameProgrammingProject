@@ -5,7 +5,7 @@
 
 Rigidbody2D::Rigidbody2D()
 	: m_useGravity(true)
-	, m_gravity(980.f)
+	, m_gravity(980 + 490.f)
 	, m_velocity()
 	, m_pOwner(nullptr)
 	, m_isFalling(false)
@@ -53,7 +53,9 @@ void Rigidbody2D::FallGravity()
 void Rigidbody2D::CalculatePos()
 {
 	Vec2 pos = m_pOwner->GetPos();
-	pos.x += m_velocity.x * fDT;
+	if(!(m_isStopMoveLeft && m_velocity.x < 0)
+		&& !(m_isStopMoveRight && m_velocity.x > 0))
+		pos.x += m_velocity.x * fDT;
 	pos.y += m_velocity.y * fDT;
 
 	m_pOwner->SetPos(pos);

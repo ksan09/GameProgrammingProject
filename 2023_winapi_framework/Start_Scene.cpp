@@ -3,16 +3,36 @@
 #include "Object.h"
 #include "Core.h"
 #include "Player.h"
+#include "Block.h"
+#include "JumpableBlock.h"
+#include "Ground.h"
 #include "Monster.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
+#include "Rigidbody2D.h"
+#include <time.h>
+
 void Start_Scene::Init()
 {
 	Object* pObj = new Player;
-	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
+	pObj->SetPos((Vec2({WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
+
+	Block* pBlock1 = new Ground;
+	pBlock1->SetPos((Vec2(WINDOW_WIDTH / 2 - 4, WINDOW_HEIGHT- 32)));
+	pBlock1->SetBlock((Vec2(WINDOW_WIDTH, 160)));
+	AddObject(pBlock1, OBJECT_GROUP::OBJ);
+
+	Block* pBlock2 = new Block;
+	pBlock2->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 160)));
+	pBlock2->SetBlock((Vec2(32.f, 32.f)));
+	AddObject(pBlock2, OBJECT_GROUP::OBJ);
+
+	srand((unsigned int)time(nullptr));
+
+	//
 
 	Vec2 vResolution = Core::GetInst()->GetResolution();
 
@@ -22,11 +42,15 @@ void Start_Scene::Init()
 	ResMgr::GetInst()->Play(L"BGM");
 
 	// 충돌체크해야되는것들을 설정하자.
-	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::OBJ);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER_DIR_COL, OBJECT_GROUP::OBJ);
+
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::OBJ);
 }
 
 void Start_Scene::Update()
 {
+	
+
 	Scene::Update();
 	//if(KEY_DOWN(KEY_TYPE::ENTER))
 	//	// 씬 변경

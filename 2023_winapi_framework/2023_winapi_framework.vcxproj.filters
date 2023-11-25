@@ -65,6 +65,9 @@
     <Filter Include="Engine\07. Component\BehaviourTree">
       <UniqueIdentifier>{5834bf1b-5618-4939-b87f-69e3e26360a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\BlockObject">
+      <UniqueIdentifier>{d65191d2-4b38-459d-bee4-b395ca9209b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -163,6 +166,15 @@
     <ClInclude Include="PlayerDirCollider.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpableBlock.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -255,6 +267,15 @@
     </ClCompile>
     <ClCompile Include="PlayerDirCollider.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpableBlock.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -12,6 +12,7 @@ Object::Object()
 	, m_vScale{}
 	, m_IsAlive(true)
 	, m_pAnimator(nullptr)
+	, m_pRigidbody2D(nullptr)
 {
 }
 
@@ -21,6 +22,8 @@ Object::~Object()
 		delete m_pCollider;
 	if (nullptr != m_pAnimator)
 		delete m_pAnimator;
+	if (nullptr != m_pRigidbody2D)
+		delete m_pRigidbody2D;
 
 }
 
@@ -81,10 +84,10 @@ void Object::StayCollision(Collider* _pOther)
 
 void Object::Component_Render(HDC _dc)
 {
-	if (nullptr != m_pCollider)
-		m_pCollider->Render(_dc);
 	if (nullptr != m_pAnimator)
 		m_pAnimator->Render(_dc);
+	if (nullptr != m_pCollider)
+		m_pCollider->Render(_dc);
 
 }
 
