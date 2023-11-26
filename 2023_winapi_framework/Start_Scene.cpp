@@ -4,7 +4,7 @@
 #include "Core.h"
 #include "Player.h"
 #include "Block.h"
-#include "JumpableBlock.h"
+#include "DefaultMonster.h"
 #include "Ground.h"
 #include "Monster.h"
 #include "KeyMgr.h"
@@ -43,6 +43,9 @@ void Start_Scene::Init()
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER_DIR_COL, OBJECT_GROUP::OBJ);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::PLAYER);
+
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::BOTTOM_COL);
 
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::OBJ);
 }

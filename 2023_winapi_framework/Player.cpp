@@ -13,7 +13,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "Rigidbody2D.h"
-#include "JumpableBlock.h"
+#include "DefaultMonster.h"
 
 
 Player::Player()
@@ -23,7 +23,11 @@ Player::Player()
 	, m_isRight(true)
 	, m_isDie(false)
 	, m_isPlayDieAnim(false)
+	, m_isSlowMove(false)
 {
+
+	SetName(L"Player");
+
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
@@ -31,7 +35,7 @@ Player::Player()
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(20.f,46.f));
+	GetCollider()->SetScale(Vec2(18.f,46.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f, 8.f));
 	// 콜라이더 끝부분마다 감지용 콜라이더 오브젝트 4개 생성해서 감지하기
 #pragma region Create PlayerDirCol
@@ -49,7 +53,7 @@ Player::Player()
 
 	PlayerDirCollider* m_pDirBottomCol = new PlayerDirCollider;
 	m_pDirBottomCol->m_pOwner = this;
-	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 18.f, 5.f }, { 0.f, 30.f });
+	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 20.f, 5.f }, { 0.f, 30.f });
 
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirLeftCol, OBJECT_GROUP::PLAYER_DIR_COL);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirRightCol, OBJECT_GROUP::PLAYER_DIR_COL);
@@ -129,10 +133,11 @@ void Player::Update()
 
 	if (KEY_DOWN(KEY_TYPE::X))
 	{
-		JumpableBlock* pJDBlock = new JumpableBlock;
-		pJDBlock->SetPos((Vec2(WINDOW_WIDTH / 2 + 32, WINDOW_HEIGHT - 256)));
+		DefaultMonster* pJDBlock = new DefaultMonster;
+		pJDBlock->SetPos((Vec2(WINDOW_WIDTH - 32, WINDOW_HEIGHT - 256)));
 		pJDBlock->SetBlock((Vec2(32.f, 32.f)));
 		pJDBlock->GetRigidbody2D()->SetUseGravity(true);
+		pJDBlock->GetRigidbody2D()->SetVelocity({ -200.f, -50.f });
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pJDBlock, OBJECT_GROUP::OBJ);
 	}
 	
@@ -292,7 +297,12 @@ void Player::Update()
 
 void Player::EnterCollision(Collider* _pOther)
 {
+	const Object* pOtherObj = _pOther->GetObj();
+	wstring objName = pOtherObj->GetName();
 
+	if (objName == L"DamageObject" || objName == L"DamageAndJumpAbleObject")
+		if (GetDie() == false)
+			Die();
 }
 
 void Player::Jump()

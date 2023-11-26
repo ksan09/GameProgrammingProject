@@ -16,14 +16,11 @@ public:
     void SetCollider(DIR state, Vec2 scale, Vec2 offset);
 private:
     void BlockCheck();
-    void DamageObjectCheck();
-    void DamageAndJumpAbleObjectCheck();
+    void JumpAbleObjectCheck();
 private:
     void BlockCheckOut();
 private:
     DIR m_eState;
-    Vec2 scale;
-    Vec2 offset;
     Player* m_pOwner;
     friend class Player;
 };

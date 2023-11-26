@@ -34,13 +34,10 @@ void PlayerDirCollider::EnterCollision(Collider* _pOther)
 	// Block
 	if (objName == L"Block" || objName == L"Ground")
 		BlockCheck();
-	// DamageObject
-	if (objName == L"DamageObject")
-		DamageObjectCheck();
 	// DamageAndJumpAbleObject
 	if (objName == L"DamageAndJumpAbleObject")
 	{
-		DamageAndJumpAbleObjectCheck();
+		JumpAbleObjectCheck();
 	}
 	
 }
@@ -101,14 +98,11 @@ void PlayerDirCollider::BlockCheck()
 	}
 }
 
-void PlayerDirCollider::DamageObjectCheck()
+void PlayerDirCollider::JumpAbleObjectCheck()
 {
-	// 사망
-	m_pOwner->Die();
-}
+	if (m_pOwner->GetDie())
+		return;
 
-void PlayerDirCollider::DamageAndJumpAbleObjectCheck()
-{
 	switch (m_eState)
 	{
 	case DIR::BOTTOM: // 점프 및 더블 점프 초기화
@@ -117,7 +111,6 @@ void PlayerDirCollider::DamageAndJumpAbleObjectCheck()
 		m_pOwner->Jump();
 		break;
 	default:
-		m_pOwner->Die();
 		break;
 	}
 }

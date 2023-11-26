@@ -68,6 +68,9 @@
     <Filter Include="Engine\04. Object\BlockObject">
       <UniqueIdentifier>{d65191d2-4b38-459d-bee4-b395ca9209b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\BlockObject\ObjectCol">
+      <UniqueIdentifier>{38a4752c-9a0a-48e6-805f-0fd229e909ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -169,11 +172,17 @@
     <ClInclude Include="Block.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
-    <ClInclude Include="JumpableBlock.h">
+    <ClInclude Include="DefaultMonster.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundCollider.h">
+      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundGroundCollider.h">
+      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -271,11 +280,17 @@
     <ClCompile Include="Block.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
-    <ClCompile Include="JumpableBlock.cpp">
+    <ClCompile Include="DefaultMonster.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundCollider.cpp">
+      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundGroundCollider.cpp">
+      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
