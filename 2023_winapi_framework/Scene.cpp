@@ -35,6 +35,13 @@ void Scene::FinalUpdate()
 
 void Scene::Render(HDC _dc)
 {
+	// ¹è°æ
+	HBRUSH hBackBrush = CreateSolidBrush(RGB(212, 217, 216));
+	HBRUSH hDefaultBrush = (HBRUSH)SelectObject(_dc, hBackBrush);
+	Rectangle(_dc, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+	SelectObject(_dc, hDefaultBrush);
+	DeleteObject(hBackBrush);
+
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size();)

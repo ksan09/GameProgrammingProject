@@ -62,14 +62,26 @@
     <Filter Include="Engine\08. Module">
       <UniqueIdentifier>{b8698270-780f-4bb6-bf63-bf69c99fa2ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\07. Component\BehaviourTree">
-      <UniqueIdentifier>{5834bf1b-5618-4939-b87f-69e3e26360a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\04. Object\BlockObject">
       <UniqueIdentifier>{d65191d2-4b38-459d-bee4-b395ca9209b9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\04. Object\BlockObject\ObjectCol">
       <UniqueIdentifier>{38a4752c-9a0a-48e6-805f-0fd229e909ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. BehaviorTree">
+      <UniqueIdentifier>{f25a5ff7-f351-47af-a383-4c9bcd815a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. BehaviorTree\AI">
+      <UniqueIdentifier>{4090c087-0cf8-4a58-b091-3f95b49f583c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. BehaviorTree\AI\Node">
+      <UniqueIdentifier>{c04744f9-42f0-4635-a265-fedd379015f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. BehaviorTree\AI\ActionNode">
+      <UniqueIdentifier>{a21637f9-2894-4160-b0e0-af1d9b2bf6b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Boss">
+      <UniqueIdentifier>{41627e2a-bc6a-47c2-a5e2-7d50bdb08782}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +196,24 @@
     <ClInclude Include="BoundGroundCollider.h">
       <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
     </ClInclude>
+    <ClInclude Include="FallingBlock.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Engine\09. BehaviorTree\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviorTree.h">
+      <Filter>Engine\09. BehaviorTree\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3.h">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3Node.h">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Spike.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -291,6 +321,24 @@
     </ClCompile>
     <ClCompile Include="BoundGroundCollider.cpp">
       <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingBlock.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Engine\09. BehaviorTree\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorTree.cpp">
+      <Filter>Engine\09. BehaviorTree\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3.cpp">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Node.cpp">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Spike.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

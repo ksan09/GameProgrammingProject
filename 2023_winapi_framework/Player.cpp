@@ -14,7 +14,8 @@
 #include "Animation.h"
 #include "Rigidbody2D.h"
 #include "DefaultMonster.h"
-
+#include "Bullet.h"
+#include "Spike.h"
 
 Player::Player()
 	: m_pTex(nullptr)
@@ -35,8 +36,8 @@ Player::Player()
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(18.f,46.f));
-	GetCollider()->SetOffSetPos(Vec2(0.f, 8.f));
+	GetCollider()->SetScale(Vec2(16.f,42.f));
+	GetCollider()->SetOffSetPos(Vec2(0.f, 6.f));
 	// 콜라이더 끝부분마다 감지용 콜라이더 오브젝트 4개 생성해서 감지하기
 #pragma region Create PlayerDirCol
 	PlayerDirCollider* m_pDirLeftCol = new PlayerDirCollider;
@@ -123,7 +124,7 @@ Player::Player()
 }
 Player::~Player()
 {
-	//if (nullptr != m_pTex)
+	//if (m_pTex != nullptr)
 	//	delete m_pTex;
 }
 void Player::Update()
@@ -133,12 +134,15 @@ void Player::Update()
 
 	if (KEY_DOWN(KEY_TYPE::X))
 	{
-		DefaultMonster* pJDBlock = new DefaultMonster;
-		pJDBlock->SetPos((Vec2(WINDOW_WIDTH - 32, WINDOW_HEIGHT - 256)));
-		pJDBlock->SetBlock((Vec2(32.f, 32.f)));
-		pJDBlock->GetRigidbody2D()->SetUseGravity(true);
-		pJDBlock->GetRigidbody2D()->SetVelocity({ -200.f, -50.f });
-		SceneMgr::GetInst()->GetCurScene()->AddObject(pJDBlock, OBJECT_GROUP::OBJ);
+		Bullet* bullet = new Bullet;
+		bullet->SetPos({ WINDOW_WIDTH / 2, 256 });
+		bullet->GetRigidbody2D()->SetVelocity(Vec2(0, -100));
+		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+	}
+	else if (KEY_DOWN(KEY_TYPE::C))
+	{
+		Spike* pSpike = new Spike(3.f);
+		SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
 	}
 	
 
@@ -288,25 +292,22 @@ void Player::Update()
 	GetRigidbody2D()->LateUpdate();
 }
 
-// 해주어야 할 것
-// 바닥에 닿으면 멈추기
-// 옆면에 닿으면 멈추기
-// 위험한 것에 옆면으로 닿으면 죽기
-// 위쪽으로 닿으면 떨어지기
-// 점프가능한 오브젝트에 닿으면 점프하기
-
 void Player::EnterCollision(Collider* _pOther)
 {
 	const Object* pOtherObj = _pOther->GetObj();
 	wstring objName = pOtherObj->GetName();
 
-	if (objName == L"DamageObject" || objName == L"DamageAndJumpAbleObject")
+	if (objName == L"DamageObject" || objName == L"DamageAndJumpAbleObject"
+		|| objName == L"FallingBlock")
 		if (GetDie() == false)
 			Die();
 }
 
 void Player::Jump()
 {
+	if (GetDie())
+		return;
+
 	ResMgr::GetInst()->Play(L"Shoot");
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
@@ -319,6 +320,7 @@ void Player::Die()
 {
 	ResMgr::GetInst()->Play(L"Shoot");
 	// 아직 안 만듬
+	GetRigidbody2D()->SetVelocity({ 0.f, -300.f });
 	m_isDie = true;
 }
 

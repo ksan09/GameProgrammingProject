@@ -66,3 +66,8 @@ enum class DIR
 {
 	LEFT, TOP, RIGHT, BOTTOM
 };
+
+enum class NODE_STATE
+{
+	SUCCESS, FAILURE, RUNNING
+};

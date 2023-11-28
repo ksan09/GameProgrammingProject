@@ -11,6 +11,7 @@
 
 DefaultMonster::DefaultMonster()
 	: m_isDie(false)
+	, m_speed(100.f)
 	, m_pBottomCol(nullptr)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"DefaultMonster", L"Texture\\DefaultMonster.bmp");
@@ -51,6 +52,26 @@ void DefaultMonster::EnterCollision(Collider* _pOther)
 		EventMgr::GetInst()->DeleteObject(m_pBottomCol);
 	}
 	
+}
+
+void DefaultMonster::ExitCollision(Collider* _pOther)
+{
+	const Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj == m_pBottomCol)
+		return;
+
+	wstring objName = pOtherObj->GetName();
+	// Block
+	if (objName == L"DamageAndJumpAbleObject")
+	{
+		return;
+	}
+
+	if (objName == L"Block")
+	{
+		GetRigidbody2D()->SetVelocity(
+			{ m_speed, GetRigidbody2D()->GetVelocity().y});
+	}
 }
 
 void DefaultMonster::Update()

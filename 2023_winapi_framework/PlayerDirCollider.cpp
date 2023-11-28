@@ -32,8 +32,9 @@ void PlayerDirCollider::EnterCollision(Collider* _pOther)
 	const Object* pOtherObj = _pOther->GetObj();
 	wstring objName = pOtherObj->GetName();
 	// Block
-	if (objName == L"Block" || objName == L"Ground")
+	if (objName == L"Block" || objName == L"Ground" || objName == L"FallingBlock")
 		BlockCheck();
+
 	// DamageAndJumpAbleObject
 	if (objName == L"DamageAndJumpAbleObject")
 	{
@@ -48,7 +49,7 @@ void PlayerDirCollider::ExitCollision(Collider* _pOther)
 
 	wstring objName = pOtherObj->GetName();
 	// Block
-	if (objName == L"Block" || objName == L"Ground")
+	if (objName == L"Block" || objName == L"Ground" || objName == L"FallingBlock")
 		BlockCheckOut();
 
 	// DamageAndJumpAbleObject

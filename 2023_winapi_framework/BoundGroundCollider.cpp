@@ -35,7 +35,7 @@ void BoundGroundCollider::Update()
 	{
 		EventMgr::GetInst()->DeleteObject(m_pOwner);
 		EventMgr::GetInst()->DeleteObject(this);
-
+		
 		m_isDie = true;
 	}
 }

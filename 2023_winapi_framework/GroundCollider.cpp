@@ -48,6 +48,7 @@ void GroundCollider::SetCollider(Object* owner, Vec2 scale, Vec2 offset)
 
 void GroundCollider::GroundCheck(Rigidbody2D* rb)
 {
+	m_pOwner->SetName(L"Block");
 	rb->Stop();
 	rb->SetUseGravity(false);
 }
