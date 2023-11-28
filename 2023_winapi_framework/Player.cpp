@@ -133,19 +133,6 @@ void Player::Update()
 	Vec2 vVelo = pRb->GetVelocity();
 	Vec2 vPos = GetPos();
 
-	if (KEY_DOWN(KEY_TYPE::X))
-	{
-		Bullet* bullet = new Bullet;
-		bullet->SetPos({ WINDOW_WIDTH / 2, 256 });
-		bullet->GetRigidbody2D()->SetVelocity(Vec2(0, -100));
-		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
-	}
-	else if (KEY_DOWN(KEY_TYPE::C))
-	{
-		Spike* pSpike = new Spike(3.f);
-		SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
-	}
-
 #pragma region MoveInput
 	m_isSlowMove = KEY_PRESS(KEY_TYPE::LSHIFT);
 
