@@ -94,7 +94,8 @@ void RepeatNode::OnStart()
 
 NODE_STATE RepeatNode::OnUpdate()
 {
-	m_eNodeState = m_pChildNode->Update();
+	if(m_pChildNode != nullptr)
+		m_eNodeState = m_pChildNode->Update();
 	return NODE_STATE::RUNNING;
 }
 

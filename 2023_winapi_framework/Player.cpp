@@ -131,6 +131,7 @@ void Player::Update()
 {
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
+	Vec2 vPos = GetPos();
 
 	if (KEY_DOWN(KEY_TYPE::X))
 	{
@@ -144,12 +145,12 @@ void Player::Update()
 		Spike* pSpike = new Spike(3.f);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
 	}
-	
 
 #pragma region MoveInput
 	m_isSlowMove = KEY_PRESS(KEY_TYPE::LSHIFT);
 
-	if (KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A))
+	if ( vPos.x - 8.f >= 0 &&
+		KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A))
 	{
 		m_isRight = false;
 		if(!m_isSlowMove || m_isJump)
@@ -157,7 +158,8 @@ void Player::Update()
 		else
 			pRb->SetVelocity({ -100.f, vVelo.y });
 	}
-	else if (KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D))
+	else if (vPos.x + 8.f <= WINDOW_WIDTH && 
+		KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D))
 	{
 		m_isRight = true;
 		if (!m_isSlowMove || m_isJump)

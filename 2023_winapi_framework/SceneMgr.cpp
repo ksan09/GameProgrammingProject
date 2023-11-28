@@ -2,15 +2,22 @@
 #include "SceneMgr.h"
 #include "Start_Scene.h"
 #include "Game_Scene.h"
+#include "Boss1Scene.h"
+#include "Boss2Scene.h"
+#include "Boss3Scene.h"
+
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;
 	// ¾À µî·Ï
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
+	RegisterScene(L"Boss1_Scene", std::make_shared<Boss1Scene>());
+	RegisterScene(L"Boss2_Scene", std::make_shared<Boss2Scene>());
+	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"Start_Scene");
+	LoadScene(L"Boss3_Scene");
 }
 
 void SceneMgr::Update()

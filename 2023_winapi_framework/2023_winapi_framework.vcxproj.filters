@@ -214,6 +214,21 @@
     <ClInclude Include="Spike.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
+    <ClInclude Include="Boss3Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss2Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1.h">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss2.h">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -339,6 +354,21 @@
     </ClCompile>
     <ClCompile Include="Spike.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss2Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1.cpp">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss2.cpp">
+      <Filter>Engine\04. Object\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
