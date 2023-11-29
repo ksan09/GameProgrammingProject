@@ -6,6 +6,7 @@
 #include "DefaultMonster.h"
 #include "Spike.h"
 #include "Bullet.h"
+#include "ResMgr.h"
 
 RandomPatternNode::RandomPatternNode()
 	: m_iSelect(0)
@@ -87,6 +88,7 @@ void BoundMonsterSpawnPattern1Node::SpawnObject()
 {
 	float speed = (m_isRight ? -m_fSpawnMonsterSpeed : m_fSpawnMonsterSpeed);
 
+	ResMgr::GetInst()->Play(L"MobShot");
 	DefaultMonster* pJDBlock = new DefaultMonster;
 	pJDBlock->SetPos(m_pOwner->GetPos());
 	pJDBlock->SetBlock((Vec2(32.f, 32.f)));
@@ -99,6 +101,8 @@ void BoundMonsterSpawnPattern1Node::SpawnBullet()
 {
 	if (m_pTarget == nullptr)
 		return;
+
+	ResMgr::GetInst()->Play(L"Bullet");
 
 	Vec2 targetPos = m_pTarget->GetPos();
 	Vec2 pos = m_pOwner->GetPos();

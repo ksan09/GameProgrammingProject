@@ -114,6 +114,11 @@ Player::Player()
 	GetAnimator()->PlayAnim(L"Player_Idle_Right", false);
 #pragma endregion
 
+	ResMgr::GetInst()->LoadSound(L"Jump", L"Sound\\Jump.wav", false);
+	ResMgr::GetInst()->LoadSound(L"StepJump", L"Sound\\StepJump.wav", false);
+	ResMgr::GetInst()->LoadSound(L"StageChange", L"Sound\\StageChange.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Death", L"Sound\\Death.wav", false);
+
 	CreateRigidbody2D();
 
 	//// 오프셋 건드리기
@@ -139,15 +144,19 @@ void Player::Update()
 	if (m_isDie)
 	{
 		m_fCurTime += fDT;
-		if(m_fCurTime >= 2.f)
+		if (m_fCurTime >= 2.f)
+		{
+			ResMgr::GetInst()->Play(L"StageChange");
 			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
+
+		}
 	}
 
 #pragma region MoveInput
 	m_isSlowMove = KEY_PRESS(KEY_TYPE::LSHIFT);
 
-	if ( vPos.x - 8.f >= 0 &&
-		KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A))
+	if ( vPos.x - 16.f >= 0 &&
+		(KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A)))
 	{
 		
 		m_isRight = false;
@@ -156,8 +165,8 @@ void Player::Update()
 		else
 			pRb->SetVelocity({ -100.f, vVelo.y });
 	}
-	else if (vPos.x + 8.f <= WINDOW_WIDTH && 
-		KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D))
+	else if (vPos.x + 16.f <= WINDOW_WIDTH && 
+		(KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D)))
 	{
 		m_isRight = true;
 		if (!m_isSlowMove || m_isJump)
@@ -308,7 +317,7 @@ void Player::Jump()
 	if (GetDie())
 		return;
 
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Jump");
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
 
@@ -318,7 +327,7 @@ void Player::Jump()
 
 void Player::Die()
 {
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Death");
 	// 아직 안 만듬
 	GetRigidbody2D()->SetVelocity({ 0.f, -300.f });
 	Core::GetInst()->Shake(0.2f, 2.f);
@@ -327,7 +336,7 @@ void Player::Die()
 
 void Player::DoubleJump()
 {
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Jump");
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
 

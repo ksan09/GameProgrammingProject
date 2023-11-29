@@ -69,6 +69,7 @@ void StageSelectScene::Init()
 	Vec2 vResolution = Core::GetInst()->GetResolution();
 
 	// 사운드 세팅
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->Play(L"BGM");
 
