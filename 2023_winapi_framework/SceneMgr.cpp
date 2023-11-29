@@ -17,7 +17,7 @@ void SceneMgr::Init()
 	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"StageSelect_Scene");
+	LoadScene(L"Start_Scene");
 }
 
 void SceneMgr::Update()
