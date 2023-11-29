@@ -86,6 +86,9 @@
     <Filter Include="Engine\05. Scene\MainScene\BossScene">
       <UniqueIdentifier>{65df0fd5-6ec9-45ea-aea2-36e29f280daa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\MainScene\StartScene">
+      <UniqueIdentifier>{f858d097-8dac-4b03-8ec9-73e6c47addec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -129,9 +132,6 @@
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Start_Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Engine\04. Object\MainObject</Filter>
@@ -238,6 +238,10 @@
     <ClInclude Include="HitEffect.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
+    <ClInclude Include="Start_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -276,9 +280,6 @@
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Start_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Engine\02. Core</Filter>
@@ -385,5 +386,9 @@
     <ClCompile Include="HitEffect.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
+    <ClCompile Include="Start_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
 </Project>
