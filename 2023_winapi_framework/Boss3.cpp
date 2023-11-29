@@ -81,6 +81,18 @@ Boss3::Boss3(Object* target)
 	randPatternNode->RegisterChild(pattern2SeqNode);
 #pragma endregion
 
+#pragma region pattern3
+	SequenceNode* pattern3SeqNode = new SequenceNode();
+
+	Boss3Pattern3Node* pattern3Node = new Boss3Pattern3Node(this, m_pTarget);
+
+	pattern3SeqNode->RegisterChild(randMoveNode);
+	pattern3SeqNode->RegisterChild(pattern3Node);
+	
+	randPatternNode->RegisterChild(pattern3SeqNode);
+#pragma endregion
+
+
 	RepeatNode* rootNode = new RepeatNode(randPatternNode);
 	m_pTree = new BehaviorTree(rootNode);
 #pragma endregion

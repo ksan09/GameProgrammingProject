@@ -197,9 +197,10 @@ void Player::Update()
 		DoubleJump();
 	}
 
-	if (GetPos().y >= WINDOW_HEIGHT)
+	Vec2 pos = GetPos();
+	if (pos.y >= WINDOW_HEIGHT - 128 - 6)
 	{
-		SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 128 - 16 })));
+		SetPos(Vec2(pos.x, WINDOW_HEIGHT - 128 - 16.f));
 	}
 #pragma endregion
 

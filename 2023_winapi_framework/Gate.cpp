@@ -47,6 +47,7 @@ void Gate::EnterCollision(Collider* _pOther)
 			return;
 	
 		m_isLoadScene = true;
+		ResMgr::GetInst()->Play(L"StageChange");
 		EventMgr::GetInst()->SceneChange(m_sceneName);
 	}
 }

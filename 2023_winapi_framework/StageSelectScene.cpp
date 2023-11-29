@@ -15,7 +15,7 @@
 void StageSelectScene::Init()
 {
 	Object* pObj = new Player;
-	pObj->SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT })));
+	pObj->SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 128 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
@@ -70,6 +70,8 @@ void StageSelectScene::Init()
 
 	// 사운드 세팅
 	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
+	ResMgr::GetInst()->Volume(SOUND_CHANNEL::BGM, 1.f);
+	ResMgr::GetInst()->Volume(SOUND_CHANNEL::EFFECT, 0.6f);
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->Play(L"BGM");
 
