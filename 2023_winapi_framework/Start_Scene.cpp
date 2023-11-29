@@ -15,17 +15,25 @@
 #include "Spike.h"
 #include "Title.h"
 #include "EventMgr.h"
+#include "GameRule.h"
 #include <time.h>
 
 Title* TitleScene;
+GameRule* PopUp;
 
 void Start_Scene::Init()
 {
-	Object* title = new Title;
+	Title* title = new Title;
 	title->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	title->SetScale(Vec2(960.f, 640.f));
 	AddObject(title, OBJECT_GROUP::DEFAULT);
-	TitleScene = new Title;
+	TitleScene = title;
+
+	GameRule* gameRule = new GameRule;
+	gameRule->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+	gameRule->SetScale(Vec2(800.f, 480.f));
+	AddObject(gameRule, OBJECT_GROUP::OBJ);
+	PopUp = gameRule;
 
 	//Object* pObj = new Player;
 	//pObj->SetPos((Vec2({WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2})));
@@ -78,9 +86,8 @@ void Start_Scene::Init()
 void Start_Scene::Update()
 {
 	Scene::Update();
-	TitleScene->Update();
 
-	if (KEY_DOWN(KEY_TYPE::SPACE))
+	if (!onGameRule && KEY_DOWN(KEY_TYPE::SPACE))
 	{
 		switch (TitleScene->curIndex)
 		{
@@ -88,13 +95,30 @@ void Start_Scene::Update()
 			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
 			break;
 		case 1:
+			onGameRule = true;
 			break;
 		case 2:
+			exit(1);
 			break;
 		default:
 			break;
 		}
 	}
+
+	if (onGameRule && KEY_DOWN(KEY_TYPE::ESC))
+		onGameRule = false;
+
+	if (onGameRule)
+	{
+		TitleScene->onGameRule = true;
+		PopUp->RulePopUp = true;
+	}
+	else
+	{
+		TitleScene->onGameRule = false;
+		PopUp->RulePopUp = false;
+	}
+
 	//if(KEY_DOWN(KEY_TYPE::ENTER))
 	//	// ¾À º¯°æ
 }

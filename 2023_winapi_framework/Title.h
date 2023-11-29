@@ -15,5 +15,6 @@ private:
 	int index;
 public:
 	int curIndex;
+	bool onGameRule;
 };
 

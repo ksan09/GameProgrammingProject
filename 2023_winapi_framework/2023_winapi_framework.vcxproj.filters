@@ -242,6 +242,7 @@
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
     <ClInclude Include="Title.h" />
+    <ClInclude Include="GameRule.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -390,5 +391,6 @@
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="GameRule.cpp" />
   </ItemGroup>
 </Project>

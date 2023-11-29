@@ -3,17 +3,15 @@
 #include "KeyMgr.h"
 #include "ResMgr.h"
 #include "Animator.h"
-//#include "Animation.h"
 
 Title::Title()
-	:m_pTex(nullptr)
+	: m_pTex(nullptr)
 	, index(0)
 	, curIndex(0)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Title", L"Texture\\Title-Sheet.bmp");
 
 	CreateAnimator();
-
 	GetAnimator()->CreateAnim(L"Title_Start", m_pTex, Vec2(0.f, 0.f),
 		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.01f);
 	GetAnimator()->CreateAnim(L"Title_GameRule", m_pTex, Vec2(0.f, 640.f),
@@ -29,6 +27,9 @@ Title::~Title()
 
 void Title::Update()
 {
+	if (onGameRule)
+		return;
+
 	if (KEY_DOWN(KEY_TYPE::DOWN) && index < 2)
 		index += 1;
 	if (KEY_DOWN(KEY_TYPE::UP) && index > 0)
@@ -53,8 +54,6 @@ void Title::Update()
 		default:
 			break;
 		}
-
-
 
 	GetAnimator()->Update();
 }

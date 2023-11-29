@@ -190,6 +190,7 @@
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="FallingBlock.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameRule.h" />
     <ClInclude Include="Gate.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="GroundCollider.h" />
@@ -239,6 +240,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="FallingBlock.cpp" />
+    <ClCompile Include="GameRule.cpp" />
     <ClCompile Include="Gate.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="GroundCollider.cpp" />
