@@ -15,11 +15,11 @@ Title::Title()
 	CreateAnimator();
 
 	GetAnimator()->CreateAnim(L"Title_Start", m_pTex, Vec2(0.f, 0.f),
-		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.2f);
+		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.01f);
 	GetAnimator()->CreateAnim(L"Title_GameRule", m_pTex, Vec2(0.f, 640.f),
-		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.2f);
+		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.01f);
 	GetAnimator()->CreateAnim(L"Title_Exit", m_pTex, Vec2(0.f, 1280.f),
-		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.2f);
+		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.01f);
 	GetAnimator()->PlayAnim(L"Title_Start", false, 1);
 }
 
