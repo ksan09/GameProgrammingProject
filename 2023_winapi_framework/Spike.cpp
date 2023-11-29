@@ -6,6 +6,7 @@
 #include "EventMgr.h"
 #include "Animator.h"
 #include "Collider.h"
+#include "Core.h"
 
 Spike::Spike(float deleteTime)
 	: m_fDangerDelay(1.f)
@@ -40,6 +41,8 @@ void Spike::Update()
 	{
 		m_isDanger = false;
 		m_fCurTime = 0;
+
+		Core::GetInst()->Shake(0.15f, 2.f);
 
 		CreateCollider();
 		SetScale(Vec2(WINDOW_WIDTH, 96 - 16));

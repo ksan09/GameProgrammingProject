@@ -83,6 +83,9 @@
     <Filter Include="Engine\04. Object\Boss">
       <UniqueIdentifier>{41627e2a-bc6a-47c2-a5e2-7d50bdb08782}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\MainScene\BossScene">
+      <UniqueIdentifier>{65df0fd5-6ec9-45ea-aea2-36e29f280daa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -126,9 +129,6 @@
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Start_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
@@ -214,20 +214,29 @@
     <ClInclude Include="Spike.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
-    <ClInclude Include="Boss3Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss2Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
     <ClInclude Include="Boss1.h">
       <Filter>Engine\04. Object\Boss</Filter>
     </ClInclude>
     <ClInclude Include="Boss2.h">
       <Filter>Engine\04. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1Scene.h">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss2Scene.h">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3Scene.h">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectScene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Gate.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HitEffect.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -267,9 +276,6 @@
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="Start_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
@@ -355,20 +361,29 @@
     <ClCompile Include="Spike.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
-    <ClCompile Include="Boss3Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss2Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
     <ClCompile Include="Boss1.cpp">
       <Filter>Engine\04. Object\Boss</Filter>
     </ClCompile>
     <ClCompile Include="Boss2.cpp">
       <Filter>Engine\04. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss2Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectScene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Gate.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="HitEffect.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

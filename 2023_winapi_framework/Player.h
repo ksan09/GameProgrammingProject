@@ -29,5 +29,7 @@ private:
     bool m_isDoubleJump;
     bool m_isRight;
     bool m_isSlowMove;
+private:
+    float m_fCurTime;
 };
 

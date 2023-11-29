@@ -42,6 +42,8 @@ void Scene::Render(HDC _dc)
 	SelectObject(_dc, hDefaultBrush);
 	DeleteObject(hBackBrush);
 
+	// 카메라 쉐이킹?
+
 	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size();)

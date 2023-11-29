@@ -17,14 +17,14 @@ Boss1::Boss1(Object* target)
 	: m_iHp(4)
 	, m_pTarget(target)
 	, m_iCurTime(0)
-	, m_iDamageDelayTime(1)
+	, m_iDamageDelayTime(1.5f)
 	, m_isDamage(false)
 {
 
 #pragma region Collider
 	CreateCollider();
 	GetCollider()->SetScale({ 32.f, 32.f });
-	GetCollider()->SetOffSetPos({ 0.f, -16.f });
+	GetCollider()->SetOffSetPos({ 0.f, -24.f });
 	SetName(L"DamageAndJumpAbleObject");
 #pragma endregion
 

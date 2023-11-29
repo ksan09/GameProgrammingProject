@@ -28,6 +28,7 @@ enum class OBJECT_GROUP
 	BOTTOM_COL,
 	PLAYER,
 	BOSS,
+	EFFECT,
 	END = 30
 };
 

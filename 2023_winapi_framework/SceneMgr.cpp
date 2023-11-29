@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SceneMgr.h"
 #include "Start_Scene.h"
-#include "Game_Scene.h"
+#include "StageSelectScene.h"
 #include "Boss1Scene.h"
 #include "Boss2Scene.h"
 #include "Boss3Scene.h"
@@ -11,13 +11,13 @@ void SceneMgr::Init()
 	m_pCurScene = nullptr;
 	// ¾À µî·Ï
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
-	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
+	RegisterScene(L"StageSelect_Scene",std::make_shared<StageSelectScene>());
 	RegisterScene(L"Boss1_Scene", std::make_shared<Boss1Scene>());
 	RegisterScene(L"Boss2_Scene", std::make_shared<Boss2Scene>());
 	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"Boss3_Scene");
+	LoadScene(L"StageSelect_Scene");
 }
 
 void SceneMgr::Update()
@@ -36,7 +36,7 @@ void SceneMgr::LoadScene(const wstring& _scenename)
 	// ¾ÀÀÌ ÀÖÀ¸¸é
 	if (m_pCurScene != nullptr)
 	{
-		m_pCurScene->Release();
+		m_pCurScene->Release(); // ¸±¸®Áî¿¡¼­ ¿¡·¯¶ä
 		m_pCurScene = nullptr;
 	}
 

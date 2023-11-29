@@ -18,7 +18,7 @@ Boss3::Boss3(Object* target)
 	: m_iHp(3)
 	, m_pTarget(target)
 	, m_iCurTime(0)
-	, m_iDamageDelayTime(1)
+	, m_iDamageDelayTime(1.5f)
 	, m_isDamage(false)
 {
 	float size = 96.f;

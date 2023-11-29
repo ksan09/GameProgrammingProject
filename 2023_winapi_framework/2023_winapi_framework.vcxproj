@@ -190,10 +190,11 @@
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="FallingBlock.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Game_Scene.h" />
+    <ClInclude Include="Gate.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="GroundCollider.h" />
     <ClInclude Include="DefaultMonster.h" />
+    <ClInclude Include="HitEffect.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Node.h" />
@@ -210,6 +211,7 @@
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="SelectGDI.h" />
     <ClInclude Include="Spike.h" />
+    <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="Start_Scene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
@@ -236,10 +238,11 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="FallingBlock.cpp" />
-    <ClCompile Include="Game_Scene.cpp" />
+    <ClCompile Include="Gate.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="GroundCollider.cpp" />
     <ClCompile Include="DefaultMonster.cpp" />
+    <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -255,6 +258,7 @@
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="SelectGDI.cpp" />
     <ClCompile Include="Spike.cpp" />
+    <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="Start_Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />

@@ -9,6 +9,7 @@
 #include "Texture.h"
 #include "PathMgr.h"
 #include "ResMgr.h"
+#include "EventMgr.h"
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
@@ -16,6 +17,7 @@
 #include "DefaultMonster.h"
 #include "Bullet.h"
 #include "Spike.h"
+#include "Core.h"
 
 Player::Player()
 	: m_pTex(nullptr)
@@ -25,6 +27,7 @@ Player::Player()
 	, m_isDie(false)
 	, m_isPlayDieAnim(false)
 	, m_isSlowMove(false)
+	, m_fCurTime(0.f)
 {
 
 	SetName(L"Player");
@@ -133,12 +136,20 @@ void Player::Update()
 	Vec2 vVelo = pRb->GetVelocity();
 	Vec2 vPos = GetPos();
 
+	if (m_isDie)
+	{
+		m_fCurTime += fDT;
+		if(m_fCurTime >= 2.f)
+			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
+	}
+
 #pragma region MoveInput
 	m_isSlowMove = KEY_PRESS(KEY_TYPE::LSHIFT);
 
 	if ( vPos.x - 8.f >= 0 &&
 		KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A))
 	{
+		
 		m_isRight = false;
 		if(!m_isSlowMove || m_isJump)
 			pRb->SetVelocity({ -250.f, vVelo.y });
@@ -179,7 +190,7 @@ void Player::Update()
 
 	if (GetPos().y >= WINDOW_HEIGHT)
 	{
-		SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 })));
+		SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 128 - 16 })));
 	}
 #pragma endregion
 
@@ -310,6 +321,7 @@ void Player::Die()
 	ResMgr::GetInst()->Play(L"Shoot");
 	// ¾ÆÁ÷ ¾È ¸¸µë
 	GetRigidbody2D()->SetVelocity({ 0.f, -300.f });
+	Core::GetInst()->Shake(0.2f, 2.f);
 	m_isDie = true;
 }
 

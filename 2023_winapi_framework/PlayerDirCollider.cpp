@@ -6,6 +6,8 @@
 #include "SceneMgr.h"
 #include "Scene.h"
 #include "EventMgr.h"
+#include "HitEffect.h"
+#include "Core.h"
 
 PlayerDirCollider::PlayerDirCollider()
 	: m_pOwner(nullptr)
@@ -93,6 +95,7 @@ void PlayerDirCollider::BlockCheck()
 			rb->StopVeloY();
 			rb->SetUseGravity(false);
 		}
+		
 		break;
 	default:
 		break;
@@ -107,9 +110,19 @@ void PlayerDirCollider::JumpAbleObjectCheck()
 	switch (m_eState)
 	{
 	case DIR::BOTTOM: // 점프 및 더블 점프 초기화
-		m_pOwner->SetIsJump(false);
-		m_pOwner->SetIsDoubleJump(false);
-		m_pOwner->Jump();
+		{
+			m_pOwner->SetIsJump(false);
+			m_pOwner->SetIsDoubleJump(false);
+			m_pOwner->Jump();
+			Core::GetInst()->Shake(0.2f, 0.5f);
+
+			Vec2 pos = GetPos();
+			pos.y += 25;
+
+			HitEffect* pHitEffect = new HitEffect;
+			pHitEffect->SetPos(pos);
+			SceneMgr::GetInst()->GetCurScene()->AddObject(pHitEffect, OBJECT_GROUP::EFFECT);
+		}
 		break;
 	default:
 		break;
@@ -123,6 +136,7 @@ void PlayerDirCollider::BlockCheckOut()
 
 	if (m_eState == DIR::BOTTOM)
 	{
+		m_pOwner->SetIsJump(true);
 		rb->SetUseGravity(true);
 	}
 

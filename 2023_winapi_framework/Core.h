@@ -44,6 +44,8 @@ public:
 	{
 		return m_arrPen[(UINT)_eType];
 	}
+public:
+	void Shake(float time, float power);
 private:
 	void Update();
 	void Render();
@@ -56,5 +58,11 @@ private:
 	POINT	m_ptResolution; // ÇØ»óµµ
 	HBRUSH  m_arrBrush[(UINT)BRUSH_TYPE::END];
 	HPEN    m_arrPen[(UINT)PEN_TYPE::END];
+private:
+	Vec2 m_vShakePos;
+	float m_fCurTime;
+	float m_fShakeTime;
+	float m_fShakePower;
+	bool m_isShake;
 };
 

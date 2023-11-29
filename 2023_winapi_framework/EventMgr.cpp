@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "EventMgr.h"
+#include "SceneMgr.h"
 #include "Object.h"
 void EventMgr::Update()
 {
@@ -24,6 +25,14 @@ void EventMgr::DeleteObject(Object* _pObj)
 	m_vecEvent.push_back(eve);
 }
 
+void EventMgr::SceneChange(wstring _wSceneName)
+{
+	tEvent eve = {};
+	eve.eEve = EVENT_TYPE::SCENE_CHANGE;
+	eve.SceneName = _wSceneName;
+	m_vecEvent.push_back(eve);
+}
+
 void EventMgr::Excute(const tEvent& _eve)
 {
 	switch (_eve.eEve)
@@ -38,6 +47,7 @@ void EventMgr::Excute(const tEvent& _eve)
 	case EVENT_TYPE::CREATE_OBJECT:
 		break;
 	case EVENT_TYPE::SCENE_CHANGE:
+		SceneMgr::GetInst()->LoadScene(_eve.SceneName);
 		break;
 	}
 }
