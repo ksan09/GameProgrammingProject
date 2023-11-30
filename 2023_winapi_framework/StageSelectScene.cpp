@@ -25,39 +25,48 @@ void StageSelectScene::Init()
 	AddObject(pBlock1, OBJECT_GROUP::OBJ);
 
 #pragma region StageSelect
-	Gate* pGate1 = new Gate;
+	Gate* pGate1 = new Gate(false);
 	pGate1->SetGateScene(L"Boss1_Scene");
-	pGate1->SetPos((Vec2(192+4, WINDOW_HEIGHT - 160 + 4)));
+	pGate1->SetPos((Vec2(192+4, WINDOW_HEIGHT - 320 + 6)));
 	AddObject(pGate1, OBJECT_GROUP::OBJ);
 	
-	Gate* pGate2 = new Gate;
+	Gate* pGate2 = new Gate(false);
 	pGate2->SetGateScene(L"Boss2_Scene");
-	pGate2->SetPos((Vec2(WINDOW_WIDTH - 192+4, WINDOW_HEIGHT - 160 + 4)));
+	pGate2->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 320 + 6)));
 	AddObject(pGate2, OBJECT_GROUP::OBJ);
 	
-	Gate* pGate3 = new Gate;
+	Gate* pGate3 = new Gate(false);
 	pGate3->SetGateScene(L"Boss3_Scene");
-	pGate3->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 320 - 128 - 64 + 4)));
+	pGate3->SetPos((Vec2(WINDOW_WIDTH - 192 + 4, WINDOW_HEIGHT - 320 + 6)));
 	AddObject(pGate3, OBJECT_GROUP::OBJ);
 	
 	Block* pBlock4 = new Block;
-	pBlock4->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 160 - 128)));
-	pBlock4->SetBlock((Vec2(32.f, 32.f)));
+	pBlock4->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 160 - 96)));
+	pBlock4->SetBlock((Vec2(96.f, 32.f)));
+	pBlock4->SetSize(3);
 	AddObject(pBlock4, OBJECT_GROUP::OBJ);
 	
+	Gate* pGateEnd = new Gate(true);
+	pGateEnd->SetGateScene(L"LastBoss_Scene");
+	pGateEnd->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 320 - 192 + 6)));
+	AddObject(pGateEnd, OBJECT_GROUP::OBJ);
+
 	Block* pBlock7 = new Block;
-	pBlock7->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 160 - 128 - 160)));
-	pBlock7->SetBlock((Vec2(32.f, 32.f)));
+	pBlock7->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 160 - 96 - 192)));
+	pBlock7->SetBlock((Vec2(96.f, 32.f)));
+	pBlock7->SetSize(3);
 	AddObject(pBlock7, OBJECT_GROUP::OBJ);
 	
 	Block* pBlock5 = new Block;
-	pBlock5->SetPos((Vec2(336, WINDOW_HEIGHT - 160 - 64)));
-	pBlock5->SetBlock((Vec2(32.f, 32.f)));
+	pBlock5->SetPos((Vec2(192, WINDOW_HEIGHT - 160 - 96)));
+	pBlock5->SetBlock((Vec2(96.f, 32.f)));
+	pBlock5->SetSize(3);
 	AddObject(pBlock5, OBJECT_GROUP::OBJ);
 	
 	Block* pBlock6 = new Block;
-	pBlock6->SetPos((Vec2(WINDOW_WIDTH - 336, WINDOW_HEIGHT - 160 - 64)));
-	pBlock6->SetBlock((Vec2(32.f, 32.f)));
+	pBlock6->SetPos((Vec2(WINDOW_WIDTH - 192, WINDOW_HEIGHT - 160 - 96)));
+	pBlock6->SetBlock((Vec2(96.f, 32.f)));
+	pBlock6->SetSize(3);
 	AddObject(pBlock6, OBJECT_GROUP::OBJ);
 
 #pragma endregion

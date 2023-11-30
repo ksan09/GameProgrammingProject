@@ -197,6 +197,8 @@
     <ClInclude Include="DefaultMonster.h" />
     <ClInclude Include="HitEffect.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossScene.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
@@ -247,6 +249,8 @@
     <ClCompile Include="DefaultMonster.cpp" />
     <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Node.cpp" />

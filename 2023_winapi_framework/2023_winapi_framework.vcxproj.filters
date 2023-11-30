@@ -243,6 +243,12 @@
     </ClInclude>
     <ClInclude Include="Title.h" />
     <ClInclude Include="GameRule.h" />
+    <ClInclude Include="LastBoss.h">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="LastBossScene.h">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -392,5 +398,11 @@
     </ClCompile>
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="GameRule.cpp" />
+    <ClCompile Include="LastBoss.cpp">
+      <Filter>Engine\04. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="LastBossScene.cpp">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

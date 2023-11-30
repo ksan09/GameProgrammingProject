@@ -8,10 +8,13 @@
 #include "Collider.h"
 #include "Object.h"
 
-Gate::Gate()
+Gate::Gate(bool v)
 	: m_isLoadScene(false)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Gate", L"Texture\\Gate.bmp");
+	if(v == true)
+		m_pTex = ResMgr::GetInst()->TexLoad(L"LastBossGate", L"Texture\\LastBossGate.bmp");
+	else
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Gate", L"Texture\\Gate.bmp");
 	SetName(L"Gate");
 
 	m_sceneName = L"";

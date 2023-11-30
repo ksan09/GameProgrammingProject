@@ -5,6 +5,7 @@
 #include "ResMgr.h"
 
 Block::Block()
+	: m_iSize(1)
 {
 	// Collider
 	CreateCollider();
@@ -28,11 +29,30 @@ void Block::Render(HDC _dc)
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
 
-	TransparentBlt(_dc
-		, (int)(vPos.x - vScale.x / 2)
-		, (int)(vPos.y - vScale.y / 2)
-		, Width, Height, m_pTex->GetDC()
-		, 0, 0, Width, Height, RGB(255, 0, 255));
+	
+
+	if (m_iSize != 1)
+	{
+		for (int i = 0; i < m_iSize; ++i)
+		{
+			TransparentBlt(_dc
+				, (int)(vPos.x - vScale.x / 2)
+				, (int)(vPos.y - vScale.y / 2)
+				, Width, Height, m_pTex->GetDC()
+				, 0, 0, Width, Height, RGB(255, 0, 255));
+
+			vPos.x += Width;
+		}
+		
+	}
+	else
+	{
+		TransparentBlt(_dc
+			, (int)(vPos.x - vScale.x / 2)
+			, (int)(vPos.y - vScale.y / 2)
+			, Width, Height, m_pTex->GetDC()
+			, 0, 0, Width, Height, RGB(255, 0, 255));
+	}
 
 	Component_Render(_dc);
 }
