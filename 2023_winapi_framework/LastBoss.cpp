@@ -5,6 +5,8 @@
 #include "Animator.h"
 #include "Node.h"
 #include "Boss3Node.h"
+#include "BehaviorTree.h"
+#include "LastBossNode.h"
 #include "Collider.h"
 
 #include "DefaultMonster.h"
@@ -51,8 +53,18 @@ LastBoss::LastBoss(Object* target)
 	GetAnimator()->PlayAnim(L"LB_Appear", false);
 #pragma endregion
 
+#pragma region AI
+	RandomPatternNode* randPatternNode = new RandomPatternNode();
+
+	LastBossPatternNode1* pattern1Node = new LastBossPatternNode1(m_pTarget);
+
+	randPatternNode->RegisterChild(pattern1Node);
+
+#pragma endregion
+
+
 	//여기에 AI짜서 넣어야 함
-	RepeatNode* rootNode = new RepeatNode(nullptr);
+	RepeatNode* rootNode = new RepeatNode(randPatternNode);
 	m_pTree = new BehaviorTree(rootNode);
 }
 

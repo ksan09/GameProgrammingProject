@@ -198,6 +198,7 @@
     <ClInclude Include="HitEffect.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossNode.h" />
     <ClInclude Include="LastBossScene.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Node.h" />
@@ -221,6 +222,7 @@
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="WallSpike.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -250,6 +252,7 @@
     <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossNode.cpp" />
     <ClCompile Include="LastBossScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -271,6 +274,7 @@
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="WallSpike.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />

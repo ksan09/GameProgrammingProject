@@ -249,6 +249,12 @@
     <ClInclude Include="LastBossScene.h">
       <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
     </ClInclude>
+    <ClInclude Include="LastBossNode.h">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="WallSpike.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -403,6 +409,12 @@
     </ClCompile>
     <ClCompile Include="LastBossScene.cpp">
       <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LastBossNode.cpp">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="WallSpike.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
