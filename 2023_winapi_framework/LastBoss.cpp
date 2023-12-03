@@ -23,7 +23,7 @@ LastBoss::LastBoss(Object* target)
 	, m_iDamageDelayTime(1.5f)
 	, m_isDamage(false)
 	, m_isSpawn(false)
-	, m_fSpawnTime(1.5f)
+	, m_fSpawnTime(1.0f)
 {
 #pragma region Collider
 	CreateCollider();
@@ -56,9 +56,18 @@ LastBoss::LastBoss(Object* target)
 #pragma region AI
 	RandomPatternNode* randPatternNode = new RandomPatternNode();
 
-	LastBossPatternNode1* pattern1Node = new LastBossPatternNode1(m_pTarget);
+#pragma region pattern1Node
+	SequenceNode* patternSeqNode = new SequenceNode();
+	LastBossPatternNode1* pattern1Node = new LastBossPatternNode1(this, m_pTarget);
 
-	randPatternNode->RegisterChild(pattern1Node);
+	patternSeqNode->RegisterChild(pattern1Node);
+	patternSeqNode->RegisterChild(pattern1Node);
+	patternSeqNode->RegisterChild(pattern1Node);
+
+	randPatternNode->RegisterChild(patternSeqNode);
+#pragma endregion
+
+	
 
 #pragma endregion
 

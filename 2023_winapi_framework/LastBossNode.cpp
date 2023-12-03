@@ -8,9 +8,13 @@
 #include "Bullet.h"
 #include "ResMgr.h"
 #include "WallSpike.h"
+#include "Animator.h"
+#include "Core.h"
 
-LastBossPatternNode1::LastBossPatternNode1(Object* target)
-	: m_pTarget(target)
+LastBossPatternNode1::LastBossPatternNode1(Object* owner, Object* target)
+	: m_pOwner(owner)
+	, m_pTarget(target)
+	, m_isAnim(false)
 	, m_isSpikeSpawn(0)
 	, m_isLeft(false)
 	, m_fCurTime(0.f)
@@ -18,7 +22,9 @@ LastBossPatternNode1::LastBossPatternNode1(Object* target)
 	, m_fRightPosX(WINDOW_WIDTH - 32)
 	, m_isDelay(false)
 	, m_iCurCount(0)
-	, m_iBulletCount(15) 
+	, m_iBulletCount(15)
+	, m_iPattern(0)
+	, m_isSkillOut(false)
 {
 
 }
@@ -29,20 +35,36 @@ LastBossPatternNode1::~LastBossPatternNode1()
 
 void LastBossPatternNode1::OnStart()
 {
+	m_pOwner->GetAnimator()->PlayAnim(L"LB_Skill", false);
+	m_pOwner->GetAnimator()->Reset();
+
 	m_isLeft = rand() % 2;
 	m_fCurTime = 0.f;
 	m_isSpikeSpawn = false;
 	m_isDelay = false;
 	m_iCurCount = 0;
+	m_iPattern = rand() % 3;
+	m_isAnim = false;
 
-	Vec2 pos = m_pTarget->GetPos();
-	m_pTarget->SetPos(Vec2((m_isLeft ? m_fLeftPosX : m_fRightPosX), pos.y));
+	
 }
 
 NODE_STATE LastBossPatternNode1::OnUpdate()
 {
 	m_fCurTime += fDT;
-	if (m_isDelay == false)
+	if (m_isAnim == false)
+	{
+		if (m_fCurTime >= 0.3f)
+		{
+			Core::GetInst()->Shake(0.15f, 1.5f);
+
+			m_fCurTime = 0.f;
+			Vec2 pos = m_pTarget->GetPos();
+			m_pTarget->SetPos(Vec2((m_isLeft ? m_fLeftPosX : m_fRightPosX), pos.y));
+			m_isAnim = true;
+		}
+	}
+	else if (m_isDelay == false)
 	{
 		// 가시 소환
 		if (m_isSpikeSpawn == false)
@@ -59,6 +81,7 @@ NODE_STATE LastBossPatternNode1::OnUpdate()
 		if (m_fCurTime >= 1.f)
 		{
 			m_isDelay = true;
+			m_pOwner->GetAnimator()->PlayAnim(L"LB_Idle", true);
 			m_fCurTime = 0.f;
 		}
 	}
@@ -100,7 +123,7 @@ void LastBossPatternNode1::ShotBullet()
 	Vec2 targetPos = m_pTarget->GetPos();
 
 	Bullet* bullet = new Bullet;
-	bullet->SetPos(Vec2((float)(m_isLeft ? WINDOW_WIDTH : 0), m_fPatternY[0][m_iCurCount - 1]));
+	bullet->SetPos(Vec2((float)(m_isLeft ? WINDOW_WIDTH : 0), m_fPatternY[m_iPattern][m_iCurCount - 1]));
 	bullet->GetRigidbody2D()->SetVelocity(Vec2((m_isLeft ? -1.f : 1.f) * 500.f, 0.f));
 	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 }
