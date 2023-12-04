@@ -255,6 +255,12 @@
     <ClInclude Include="WallSpike.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
+    <ClInclude Include="AutoBullet.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Danger.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -415,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="WallSpike.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoBullet.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Danger.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

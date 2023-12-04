@@ -41,7 +41,7 @@ void Gate::Update()
 
 void Gate::EnterCollision(Collider* _pOther)
 {
-	if (_pOther->GetObj()->GetName() == L"Player")
+	if (_pOther->GetObj()->GetName() == L"DIR_BOTTOM_COL")
 	{
 		if (m_sceneName == L"")
 			return;

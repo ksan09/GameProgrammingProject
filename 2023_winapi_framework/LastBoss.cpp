@@ -17,7 +17,7 @@
 #include "EventMgr.h"
 
 LastBoss::LastBoss(Object* target)
-	: m_iHp(3)
+	: m_iHp(4)
 	, m_pTarget(target)
 	, m_iCurTime(0)
 	, m_iDamageDelayTime(1.5f)
@@ -27,8 +27,8 @@ LastBoss::LastBoss(Object* target)
 {
 #pragma region Collider
 	CreateCollider();
-	GetCollider()->SetScale({ 32.f, 32.f });
-	GetCollider()->SetOffSetPos({ 0.f, 0.f });
+	GetCollider()->SetScale({ 32.f, 64.f });
+	GetCollider()->SetOffSetPos({ 0.f, 12.f });
 	SetName(L"DamageAndJumpAbleObject");
 #pragma endregion
 
@@ -44,7 +44,7 @@ LastBoss::LastBoss(Object* target)
 	GetAnimator()->CreateAnim(L"LB_Idle", m_pTex, Vec2(0.f, sizeY),
 		Vec2(sizeX, sizeY), Vec2(sizeX, 0.f), 4, 0.1f);
 	GetAnimator()->CreateAnim(L"LB_Move", m_pTex, Vec2(0.f, sizeY * 2),
-		Vec2(sizeX, sizeY), Vec2(sizeX, 0.f), 6, 0.1f);
+		Vec2(sizeX, sizeY), Vec2(sizeX, 0.f), 6, 0.05f);
 	GetAnimator()->CreateAnim(L"LB_Skill", m_pTex, Vec2(0.f, sizeY * 3),
 		Vec2(sizeX, sizeY), Vec2(sizeX, 0.f), 10, 0.1f);
 	GetAnimator()->CreateAnim(L"LB_Damage", m_pTex, Vec2(0.f, sizeY * 4),
@@ -62,17 +62,27 @@ LastBoss::LastBoss(Object* target)
 
 	patternSeqNode->RegisterChild(pattern1Node);
 	patternSeqNode->RegisterChild(pattern1Node);
-	patternSeqNode->RegisterChild(pattern1Node);
 
 	randPatternNode->RegisterChild(patternSeqNode);
 #pragma endregion
 
-	
+#pragma region pattern2Node
+	LastBossPatternNode2* pattern2Node = new LastBossPatternNode2(this, m_pTarget);
 
+	randPatternNode->RegisterChild(pattern2Node);
+#pragma endregion
+
+#pragma region pattern3Node
+	LastBossPatternNode3* pattern3Node = new LastBossPatternNode3(this, m_pTarget);
+
+	randPatternNode->RegisterChild(pattern3Node);
 #pragma endregion
 
 
+#pragma endregion
+
 	//여기에 AI짜서 넣어야 함
+	//RepeatNode* rootNode = new RepeatNode(pattern2Node);
 	RepeatNode* rootNode = new RepeatNode(randPatternNode);
 	m_pTree = new BehaviorTree(rootNode);
 }
@@ -98,6 +108,7 @@ void LastBoss::Update()
 			{
 				m_isSpawn = true;
 				GetAnimator()->PlayAnim(L"LB_Idle", true);
+				
 			}
 		}
 		return;
@@ -115,7 +126,10 @@ void LastBoss::Update()
 
 			m_isDamage = false;
 			SetName(L"DamageAndJumpAbleObject");
-			GetAnimator()->PlayAnim(L"LB_Idle", true);
+
+			NODE_STATE state = m_pTree->Update();
+
+			GetAnimator()->PlayAnim(L"LB_Move", true);
 		}
 	}
 	else

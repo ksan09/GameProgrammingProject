@@ -9,7 +9,7 @@
 #include "ResMgr.h"
 
 RandomPatternNode::RandomPatternNode()
-	: m_iSelect(0)
+	: m_iSelect(-1)
 {
 }
 

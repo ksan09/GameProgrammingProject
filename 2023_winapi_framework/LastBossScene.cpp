@@ -31,6 +31,7 @@ void LastBossScene::Init()
 	pBlock2->SetPos((Vec2(WINDOW_WIDTH / 2, 192)));
 	pBlock2->SetBlock(Vec2(160.f, 32.f));
 	pBlock2->SetSize(5);
+	pBlock2->SetName(L"None");
 	AddObject(pBlock2, OBJECT_GROUP::OBJ);
 
 	LastBoss* pBoss = new LastBoss(pObj);
