@@ -80,7 +80,7 @@ LastBoss::LastBoss(Object* target)
 
 
 #pragma endregion
-
+	//
 	//여기에 AI짜서 넣어야 함
 	//RepeatNode* rootNode = new RepeatNode(pattern2Node);
 	RepeatNode* rootNode = new RepeatNode(randPatternNode);
