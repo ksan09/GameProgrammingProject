@@ -248,6 +248,21 @@
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
     <ClInclude Include="Boss2Node.h" />
+    <ClInclude Include="AutoBullet.h" />
+    <ClInclude Include="Danger.h" />
+    <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossNode.h" />
+    <ClInclude Include="LastBossScene.h" />
+    <ClInclude Include="WallSpike.h" />
+    <ClInclude Include="Boss1Node.h">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="WarningObject.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -402,5 +417,20 @@
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
     <ClCompile Include="Boss2Node.cpp" />
+    <ClCompile Include="AutoBullet.cpp" />
+    <ClCompile Include="Danger.cpp" />
+    <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossNode.cpp" />
+    <ClCompile Include="LastBossScene.cpp" />
+    <ClCompile Include="WallSpike.cpp" />
+    <ClCompile Include="Boss1Node.cpp">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="WarningObject.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
