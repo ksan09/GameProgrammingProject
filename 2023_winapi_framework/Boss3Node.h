@@ -5,6 +5,7 @@
 class RandomPatternNode
 	: public CompositeNode
 {
+	// 패턴이 연속으로 2번 이상은 나오지 않도록
 public:
 	RandomPatternNode();
 	~RandomPatternNode();
@@ -79,4 +80,27 @@ private:
 	Vec2 m_vEndPos;
 	float m_fSpeed;
 
+};
+
+class Boss3Pattern3Node
+	: public ActionNode
+{
+public:
+	Boss3Pattern3Node(Object* owner, Object* target);
+	~Boss3Pattern3Node();
+public:
+	virtual void OnStart() override;
+	virtual NODE_STATE OnUpdate() override;
+	virtual void OnStop() override;
+private:
+	void SpawnBullet();
+private:
+	Object* m_pOwner;
+	Object* m_pTarget;
+private:
+	float m_fCurTime;
+	float m_fShootDelay;
+	int m_iBulletCount;
+	int m_iCurShootCount;
+	bool m_bSpikeSpawn;
 };

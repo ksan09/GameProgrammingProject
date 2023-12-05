@@ -134,7 +134,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)Output\bin\Res\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Output\bin\Res\core\inc;$(SolutionDir)Output\bin\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -170,11 +170,11 @@
     <ClInclude Include="2023_winapi_framework.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
+    <ClInclude Include="AutoBullet.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Boss1.h" />
-    <ClInclude Include="Boss1Node.h" />
     <ClInclude Include="Boss1Scene.h" />
     <ClInclude Include="Boss2.h" />
     <ClInclude Include="Boss2Scene.h" />
@@ -186,18 +186,22 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Danger.h" />
     <ClInclude Include="define.h" />
-    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="FallingBlock.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameRule.h" />
     <ClInclude Include="Gate.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="GroundCollider.h" />
     <ClInclude Include="DefaultMonster.h" />
     <ClInclude Include="HitEffect.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossNode.h" />
+    <ClInclude Include="LastBossScene.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
@@ -218,17 +222,18 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="Vec2.h" />
-    <ClInclude Include="WarningObject.h" />
+    <ClInclude Include="WallSpike.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="AutoBullet.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Boss1.cpp" />
-    <ClCompile Include="Boss1Node.cpp" />
     <ClCompile Include="Boss1Scene.cpp" />
     <ClCompile Include="Boss2.cpp" />
     <ClCompile Include="Boss2Scene.cpp" />
@@ -240,15 +245,19 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="EndingScene.cpp" />
+    <ClCompile Include="Danger.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="FallingBlock.cpp" />
+    <ClCompile Include="GameRule.cpp" />
     <ClCompile Include="Gate.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="GroundCollider.cpp" />
     <ClCompile Include="DefaultMonster.cpp" />
     <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossNode.cpp" />
+    <ClCompile Include="LastBossScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -267,8 +276,9 @@
     <ClCompile Include="Start_Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="Vec2.cpp" />
-    <ClCompile Include="WarningObject.cpp" />
+    <ClCompile Include="WallSpike.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />

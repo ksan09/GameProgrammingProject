@@ -17,6 +17,7 @@
 #include "DefaultMonster.h"
 #include "Bullet.h"
 #include "Spike.h"
+#include "WallSpike.h"
 #include "Core.h"
 
 Player::Player()
@@ -39,8 +40,8 @@ Player::Player()
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(16.f,42.f));
-	GetCollider()->SetOffSetPos(Vec2(0.f, 6.f));
+	GetCollider()->SetScale(Vec2(16.f,36.f));
+	GetCollider()->SetOffSetPos(Vec2(0.f, 4.f));
 	// 콜라이더 끝부분마다 감지용 콜라이더 오브젝트 4개 생성해서 감지하기
 #pragma region Create PlayerDirCol
 	PlayerDirCollider* m_pDirLeftCol = new PlayerDirCollider;
@@ -53,11 +54,11 @@ Player::Player()
 
 	PlayerDirCollider* m_pDirTopCol = new PlayerDirCollider;
 	m_pDirTopCol->m_pOwner = this;
-	m_pDirTopCol->SetCollider(DIR::TOP, { 18.f, 5.f }, { 0.f, -15.f });
+	m_pDirTopCol->SetCollider(DIR::TOP, { 15.5f, 5.f }, { 0.f, -15.f });
 
 	PlayerDirCollider* m_pDirBottomCol = new PlayerDirCollider;
 	m_pDirBottomCol->m_pOwner = this;
-	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 20.f, 5.f }, { 0.f, 30.f });
+	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 15.5f, 15.f }, { 0.f, 28.f });
 
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirLeftCol, OBJECT_GROUP::PLAYER_DIR_COL);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirRightCol, OBJECT_GROUP::PLAYER_DIR_COL);
@@ -114,6 +115,11 @@ Player::Player()
 	GetAnimator()->PlayAnim(L"Player_Idle_Right", false);
 #pragma endregion
 
+	ResMgr::GetInst()->LoadSound(L"Jump", L"Sound\\Jump.wav", false);
+	ResMgr::GetInst()->LoadSound(L"StepJump", L"Sound\\StepJump.wav", false);
+	ResMgr::GetInst()->LoadSound(L"StageChange", L"Sound\\StageChange.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Death", L"Sound\\Death.wav", false);
+
 	CreateRigidbody2D();
 
 	//// 오프셋 건드리기
@@ -139,15 +145,19 @@ void Player::Update()
 	if (m_isDie)
 	{
 		m_fCurTime += fDT;
-		if(m_fCurTime >= 2.f)
+		if (m_fCurTime >= 2.f)
+		{
+			ResMgr::GetInst()->Play(L"StageChange");
 			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
+
+		}
 	}
 
 #pragma region MoveInput
 	m_isSlowMove = KEY_PRESS(KEY_TYPE::LSHIFT);
 
-	if ( vPos.x - 8.f >= 0 &&
-		KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A))
+	if ( vPos.x - 16.f >= 0 &&
+		(KEY_PRESS(KEY_TYPE::LEFT) || KEY_PRESS(KEY_TYPE::A)))
 	{
 		
 		m_isRight = false;
@@ -156,8 +166,8 @@ void Player::Update()
 		else
 			pRb->SetVelocity({ -100.f, vVelo.y });
 	}
-	else if (vPos.x + 8.f <= WINDOW_WIDTH && 
-		KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D))
+	else if (vPos.x + 16.f <= WINDOW_WIDTH && 
+		(KEY_PRESS(KEY_TYPE::RIGHT) || KEY_PRESS(KEY_TYPE::D)))
 	{
 		m_isRight = true;
 		if (!m_isSlowMove || m_isJump)
@@ -178,6 +188,10 @@ void Player::Update()
 			|| KEY_DOWN(KEY_TYPE::W)
 			|| KEY_DOWN(KEY_TYPE::UP)))
 	{
+		//
+		
+		//
+
 		Jump();
 	}
 	else if (m_isJump == true && m_isDoubleJump == false && m_isDie == false
@@ -188,9 +202,10 @@ void Player::Update()
 		DoubleJump();
 	}
 
-	if (GetPos().y >= WINDOW_HEIGHT)
+	Vec2 pos = GetPos();
+	if (pos.y >= WINDOW_HEIGHT - 128 - 6)
 	{
-		SetPos((Vec2({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 128 - 16 })));
+		SetPos(Vec2(pos.x, WINDOW_HEIGHT - 128 - 16.f));
 	}
 #pragma endregion
 
@@ -308,7 +323,7 @@ void Player::Jump()
 	if (GetDie())
 		return;
 
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Jump");
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
 
@@ -318,7 +333,7 @@ void Player::Jump()
 
 void Player::Die()
 {
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Death");
 	// 아직 안 만듬
 	GetRigidbody2D()->SetVelocity({ 0.f, -300.f });
 	Core::GetInst()->Shake(0.2f, 2.f);
@@ -327,7 +342,7 @@ void Player::Die()
 
 void Player::DoubleJump()
 {
-	ResMgr::GetInst()->Play(L"Shoot");
+	ResMgr::GetInst()->Play(L"Jump");
 	Rigidbody2D* pRb = GetRigidbody2D();
 	Vec2 vVelo = pRb->GetVelocity();
 

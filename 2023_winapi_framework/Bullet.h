@@ -6,13 +6,13 @@ class Bullet :
 {
 public:
     Bullet();
-    ~Bullet();
+    virtual ~Bullet();
 public:
     void Update() override;
     void Render(HDC _dc) override;
 
     virtual void EnterCollision(Collider* _pOther) override;
-private:
+protected:
     Texture* m_pTex;
     bool m_isDie;
 };

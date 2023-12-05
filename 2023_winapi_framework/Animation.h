@@ -24,6 +24,8 @@ public:
 	void SetName(wstring _name) { m_strName = _name; }
 	void SetFrameOffset(int _index, Vec2 _offset) { m_vecAnimFrame[_index].vOffset = _offset; }
 	const size_t& GetMaxFrame() { return m_vecAnimFrame.size(); }
+
+	void Reset() { m_CurFrame = 0; }
 	friend class Animator;
 private:
 	UINT   m_CurFrame; // 현재 프레임

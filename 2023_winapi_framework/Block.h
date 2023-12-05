@@ -11,8 +11,10 @@ public:
     void Render(HDC _dc) override;
 public:
     void SetBlock(Vec2 scale);
+    void SetSize(int v) { m_iSize = v; }
 protected:
     Texture* m_pTex;
+    int m_iSize;
 
 };
 

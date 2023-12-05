@@ -8,6 +8,7 @@
 #include "EventMgr.h"
 #include "HitEffect.h"
 #include "Core.h"
+#include "ResMgr.h"
 
 PlayerDirCollider::PlayerDirCollider()
 	: m_pOwner(nullptr)
@@ -90,6 +91,7 @@ void PlayerDirCollider::BlockCheck()
 		if (velo.y > 0)
 		{
 			//그라운드 체킹
+			
 			m_pOwner->SetIsJump(false);
 			m_pOwner->SetIsDoubleJump(false);
 			rb->StopVeloY();
@@ -115,6 +117,8 @@ void PlayerDirCollider::JumpAbleObjectCheck()
 			m_pOwner->SetIsDoubleJump(false);
 			m_pOwner->Jump();
 			Core::GetInst()->Shake(0.2f, 0.5f);
+
+			ResMgr::GetInst()->Play(L"StepJump");
 
 			Vec2 pos = GetPos();
 			pos.y += 25;

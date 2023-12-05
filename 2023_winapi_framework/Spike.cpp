@@ -49,6 +49,7 @@ void Spike::Update()
 		GetCollider()->SetOffSetPos({ 0, 80 });
 		GetCollider()->SetScale(Vec2(WINDOW_WIDTH, 96 - 80));
 
+		ResMgr::GetInst()->Play(L"SpikeUp");
 		GetAnimator()->PlayAnim(L"Spike_Up", false);
 	}
 	else if (m_isDanger == false && m_isDangerEnd == false

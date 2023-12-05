@@ -35,6 +35,19 @@ void Bullet::Update()
 {
 	GetAnimator()->Update();
 	GetRigidbody2D()->LateUpdate();
+
+	if (m_isDie) return;
+
+	Vec2 pos = GetPos();
+	float correctVal = 32.f;
+
+	if (pos.x < 0 - correctVal || pos.x > WINDOW_WIDTH + correctVal
+		|| pos.y < 0 - correctVal || pos.y > WINDOW_HEIGHT + correctVal)
+	{
+		EventMgr::GetInst()->DeleteObject(this);
+
+		m_isDie = true;
+	}
 }
 
 void Bullet::Render(HDC _dc)

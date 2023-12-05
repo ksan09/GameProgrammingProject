@@ -8,10 +8,13 @@
 #include "Collider.h"
 #include "Object.h"
 
-Gate::Gate()
+Gate::Gate(bool v)
 	: m_isLoadScene(false)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Gate", L"Texture\\Gate.bmp");
+	if(v == true)
+		m_pTex = ResMgr::GetInst()->TexLoad(L"LastBossGate", L"Texture\\LastBossGate.bmp");
+	else
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Gate", L"Texture\\Gate.bmp");
 	SetName(L"Gate");
 
 	m_sceneName = L"";
@@ -38,7 +41,7 @@ void Gate::Update()
 
 void Gate::EnterCollision(Collider* _pOther)
 {
-	if (_pOther->GetObj()->GetName() == L"Player")
+	if (_pOther->GetObj()->GetName() == L"DIR_BOTTOM_COL")
 	{
 		if (m_sceneName == L"")
 			return;
@@ -47,6 +50,7 @@ void Gate::EnterCollision(Collider* _pOther)
 			return;
 	
 		m_isLoadScene = true;
+		ResMgr::GetInst()->Play(L"StageChange");
 		EventMgr::GetInst()->SceneChange(m_sceneName);
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
 class Object;
 class Texture;
-class Animation;
+#include "Animation.h"
 class Animator
 {
 public:
@@ -25,6 +25,7 @@ public:
 	const bool& GetRepeat() const { return m_IsRepeat; }
 	const int& GetRepeatcnt() const { return m_repeatcnt; }
 	void SetRepeatcnt() { --m_repeatcnt; }
+	void Reset() { m_pCurAnim->Reset(); }
 private:
 	map<wstring, Animation*> m_mapAnim;
 	Animation* m_pCurAnim;

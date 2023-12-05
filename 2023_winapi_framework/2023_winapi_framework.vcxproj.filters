@@ -86,11 +86,8 @@
     <Filter Include="Engine\05. Scene\MainScene\BossScene">
       <UniqueIdentifier>{65df0fd5-6ec9-45ea-aea2-36e29f280daa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\09. BehaviorTree\AI\Node\Boss1Node">
-      <UniqueIdentifier>{d831c2f0-2cc0-46a9-8569-9eb7dfc5883c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\WarningObject">
-      <UniqueIdentifier>{6a3c9196-2099-4e61-9038-697b187f8fc0}</UniqueIdentifier>
+    <Filter Include="Engine\05. Scene\MainScene\StartScene">
+      <UniqueIdentifier>{f858d097-8dac-4b03-8ec9-73e6c47addec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +132,6 @@
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Start_Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Engine\04. Object\MainObject</Filter>
@@ -244,14 +238,28 @@
     <ClInclude Include="HitEffect.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
-    <ClInclude Include="Boss1Node.h">
-      <Filter>Engine\09. BehaviorTree\AI\Node\Boss1Node</Filter>
+    <ClInclude Include="Start_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="WarningObject.h">
-      <Filter>Engine\04. Object\WarningObject</Filter>
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="GameRule.h" />
+    <ClInclude Include="LastBoss.h">
+      <Filter>Engine\04. Object\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="EndingScene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
+    <ClInclude Include="LastBossScene.h">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LastBossNode.h">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="WallSpike.h">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoBullet.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Danger.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,9 +299,6 @@
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Start_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Engine\02. Core</Filter>
@@ -400,14 +405,28 @@
     <ClCompile Include="HitEffect.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
-    <ClCompile Include="Boss1Node.cpp">
-      <Filter>Engine\09. BehaviorTree\AI\Node\Boss1Node</Filter>
+    <ClCompile Include="Start_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="WarningObject.cpp">
-      <Filter>Engine\04. Object\WarningObject</Filter>
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="GameRule.cpp" />
+    <ClCompile Include="LastBoss.cpp">
+      <Filter>Engine\04. Object\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="EndingScene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
+    <ClCompile Include="LastBossScene.cpp">
+      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LastBossNode.cpp">
+      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="WallSpike.cpp">
+      <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoBullet.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Danger.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

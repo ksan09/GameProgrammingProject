@@ -5,7 +5,7 @@
 #include "Boss1Scene.h"
 #include "Boss2Scene.h"
 #include "Boss3Scene.h"
-#include "EndingScene.h"
+#include "LastBossScene.h"
 
 void SceneMgr::Init()
 {
@@ -16,10 +16,10 @@ void SceneMgr::Init()
 	RegisterScene(L"Boss1_Scene", std::make_shared<Boss1Scene>());
 	RegisterScene(L"Boss2_Scene", std::make_shared<Boss2Scene>());
 	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());
-	RegisterScene(L"Ending_Scene", std::make_shared<EndingScene>());
+	RegisterScene(L"LastBoss_Scene", std::make_shared<LastBossScene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"StageSelect_Scene");
+	LoadScene(L"Start_Scene");
 }
 
 void SceneMgr::Update()
