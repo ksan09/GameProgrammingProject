@@ -175,6 +175,7 @@
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Boss1.h" />
+    <ClInclude Include="Boss1Node.h" />
     <ClInclude Include="Boss1Scene.h" />
     <ClInclude Include="Boss2.h" />
     <ClInclude Include="Boss2Scene.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Danger.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="FallingBlock.h" />
@@ -225,6 +227,7 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WallSpike.h" />
+    <ClInclude Include="WarningObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -234,6 +237,7 @@
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Boss1.cpp" />
+    <ClCompile Include="Boss1Node.cpp" />
     <ClCompile Include="Boss1Scene.cpp" />
     <ClCompile Include="Boss2.cpp" />
     <ClCompile Include="Boss2Scene.cpp" />
@@ -246,6 +250,7 @@
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Danger.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="FallingBlock.cpp" />
     <ClCompile Include="GameRule.cpp" />
@@ -279,6 +284,7 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="WallSpike.cpp" />
+    <ClCompile Include="WarningObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />
