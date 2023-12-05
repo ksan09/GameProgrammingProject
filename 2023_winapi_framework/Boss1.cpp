@@ -5,6 +5,7 @@
 #include "Animator.h"
 #include "Node.h"
 #include "Collider.h"
+#include "Rigidbody2D.h"
 
 #include "DefaultMonster.h"
 #include "SceneMgr.h"
@@ -12,14 +13,19 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "EventMgr.h"
+#include "Boss1Node.h"
 
 Boss1::Boss1(Object* target)
 	: m_iHp(4)
 	, m_pTarget(target)
 	, m_iCurTime(0)
-	, m_iDamageDelayTime(1.5f)
+	, m_fDieTime(0)
+	, m_iDelayTime(1.5f)
 	, m_isDamage(false)
+	, m_isGround(false)
+	, m_isDie(false)
 {
+	CreateRigidbody2D();
 
 #pragma region Collider
 	CreateCollider();
@@ -47,8 +53,30 @@ Boss1::Boss1(Object* target)
 	GetAnimator()->PlayAnim(L"Boss1_Idle", true);
 #pragma endregion
 
+
+	SequenceNode* pattern1SeqNode = new SequenceNode();
+	RandomPatternNode1* randMoveNode = new RandomPatternNode1();
+	RandomPatternNode1* randPatternNode = new RandomPatternNode1();
+
+#pragma region 점프 노드
+
+	JumpNode* moveRightNode = new JumpNode(this, m_pTarget->GetPos(), 500);
+
+	//randMoveNode->RegisterChild(moveRightNode);
+
+	//randPatternNode->RegisterChild(randMoveNode);
+#pragma endregion
+
+	// 공격 노드
+	BoundMonsterSpawnPattern1Node1* pattern1 = new BoundMonsterSpawnPattern1Node1(this, m_pTarget);
+
+	pattern1SeqNode->RegisterChild(moveRightNode);
+	pattern1SeqNode->RegisterChild(pattern1);
+
+	randPatternNode->RegisterChild(pattern1SeqNode);
+
 	//여기에 AI짜서 넣어야 함
-	RepeatNode* rootNode = new RepeatNode(nullptr);
+	RepeatNode* rootNode = new RepeatNode(randPatternNode);
 	m_pTree = new BehaviorTree(rootNode);
 }
 
@@ -62,16 +90,23 @@ void Boss1::Update()
 {
 	GetAnimator()->Update();
 
+	//죽을 때 씬 넘기기 안됨
+	if (m_isDie)
+	{
+		m_fDieTime += fDT;
+		if (m_fDieTime >= 2.f)
+			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
+	}
+
 	if (m_isDamage)
 	{
 		m_iCurTime += fDT;
-		if (m_iCurTime >= m_iDamageDelayTime)
+		if (m_iCurTime >= m_iDelayTime)
 		{
 			if (m_iHp <= 0)
 			{
 				Die();
 			}
-
 			m_isDamage = false;
 			SetName(L"DamageAndJumpAbleObject");
 			GetAnimator()->PlayAnim(L"Boss1_Idle", true);
@@ -81,6 +116,20 @@ void Boss1::Update()
 	{
 		NODE_STATE state = m_pTree->Update();
 	}
+
+	GetRigidbody2D()->LateUpdate();
+}
+
+void Boss1::ExitCollision(Collider* _pOther)
+{
+	const Object* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Ground")
+	{
+		m_isGround = false;
+		GetRigidbody2D()->SetUseGravity(true);
+		GetAnimator()->PlayAnim(L"Boss1_JumpUp", true);
+	}
 }
 
 void Boss1::EnterCollision(Collider* _pOther)
@@ -88,6 +137,16 @@ void Boss1::EnterCollision(Collider* _pOther)
 	if (m_isDamage) return;
 
 	const Object* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Ground")
+	{
+		m_isGround = true;
+
+		GetRigidbody2D()->Stop();
+		GetRigidbody2D()->SetUseGravity(false);
+	}
+
+
 	if (pOtherObj->GetName() == L"DIR_BOTTOM_COL")
 	{
 		--m_iHp;
@@ -107,4 +166,5 @@ void Boss1::Render(HDC _dc)
 void Boss1::Die()
 {
 	EventMgr::GetInst()->DeleteObject(this);
+	m_isDie = true;
 }
