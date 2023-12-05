@@ -144,4 +144,5 @@ void Boss3::Render(HDC _dc)
 void Boss3::Die()
 {
 	EventMgr::GetInst()->DeleteObject(this);
+	EventMgr::GetInst()->SceneChange(L"Ending_Scene");
 }

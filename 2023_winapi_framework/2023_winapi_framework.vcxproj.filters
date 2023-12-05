@@ -86,6 +86,12 @@
     <Filter Include="Engine\05. Scene\MainScene\BossScene">
       <UniqueIdentifier>{65df0fd5-6ec9-45ea-aea2-36e29f280daa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\09. BehaviorTree\AI\Node\Boss1Node">
+      <UniqueIdentifier>{d831c2f0-2cc0-46a9-8569-9eb7dfc5883c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\WarningObject">
+      <UniqueIdentifier>{6a3c9196-2099-4e61-9038-697b187f8fc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -238,6 +244,15 @@
     <ClInclude Include="HitEffect.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
+    <ClInclude Include="Boss1Node.h">
+      <Filter>Engine\09. BehaviorTree\AI\Node\Boss1Node</Filter>
+    </ClInclude>
+    <ClInclude Include="WarningObject.h">
+      <Filter>Engine\04. Object\WarningObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -384,6 +399,15 @@
     </ClCompile>
     <ClCompile Include="HitEffect.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1Node.cpp">
+      <Filter>Engine\09. BehaviorTree\AI\Node\Boss1Node</Filter>
+    </ClCompile>
+    <ClCompile Include="WarningObject.cpp">
+      <Filter>Engine\04. Object\WarningObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
