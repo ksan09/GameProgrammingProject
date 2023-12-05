@@ -6,19 +6,21 @@
 #include "Boss2Scene.h"
 #include "Boss3Scene.h"
 #include "LastBossScene.h"
+#include "EndingScene.h"
 
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;
-	// ¾À µî·Ï
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"StageSelect_Scene",std::make_shared<StageSelectScene>());
 	RegisterScene(L"Boss1_Scene", std::make_shared<Boss1Scene>());
 	RegisterScene(L"Boss2_Scene", std::make_shared<Boss2Scene>());
 	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());
 	RegisterScene(L"LastBoss_Scene", std::make_shared<LastBossScene>());
+	RegisterScene(L"Ending_Scene", std::make_shared<EndingScene>());
 
-	// Ã¹ ¾À ÁöÁ¤
+	// Ã¹ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	LoadScene(L"Start_Scene");
 }
 
@@ -35,10 +37,10 @@ void SceneMgr::Render(HDC _dc)
 
 void SceneMgr::LoadScene(const wstring& _scenename)
 {
-	// ¾ÀÀÌ ÀÖÀ¸¸é
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (m_pCurScene != nullptr)
 	{
-		m_pCurScene->Release(); // ¸±¸®Áî¿¡¼­ ¿¡·¯¶ä
+		m_pCurScene->Release(); // ï¿½ï¿½ï¿½ï¿½ï¿½î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		m_pCurScene = nullptr;
 	}
 

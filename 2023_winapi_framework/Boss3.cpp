@@ -39,8 +39,7 @@ Boss3::Boss3(Object* target)
 		Vec2(size, size), Vec2(size, 0.f), 4, 0.2f);
 	GetAnimator()->CreateAnim(L"Boss3_Damage", m_pTex, Vec2(0.f, size),
 		Vec2(size, size), Vec2(size, 0.f), 3, 0.1f);
-	//
-	GetAnimator()->PlayAnim(L"Boss3_Idle", true);
+		GetAnimator()->PlayAnim(L"Boss3_Idle", true);
 #pragma endregion
 
 	// Node 구조 짜기

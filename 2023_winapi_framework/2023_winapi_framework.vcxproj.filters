@@ -241,34 +241,27 @@
     <ClInclude Include="Start_Scene.h">
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h" />
-    <ClInclude Include="GameRule.h" />
-    <ClInclude Include="LastBoss.h">
-      <Filter>Engine\04. Object\Boss</Filter>
+    <ClInclude Include="GameRule.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="LastBossScene.h">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    <ClInclude Include="Title.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="LastBossNode.h">
+    <ClInclude Include="Boss2Node.h" />
+    <ClInclude Include="AutoBullet.h" />
+    <ClInclude Include="Danger.h" />
+    <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossNode.h" />
+    <ClInclude Include="LastBossScene.h" />
+    <ClInclude Include="WallSpike.h" />
+    <ClInclude Include="Boss1Node.h">
       <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
     </ClInclude>
-    <ClInclude Include="WallSpike.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="AutoBullet.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Danger.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
     <ClInclude Include="EndingScene.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1Node.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="WarningObject.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
+      <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -417,34 +410,27 @@
     <ClCompile Include="Start_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="GameRule.cpp" />
-    <ClCompile Include="LastBoss.cpp">
-      <Filter>Engine\04. Object\Boss</Filter>
+    <ClCompile Include="GameRule.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="LastBossScene.cpp">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    <ClCompile Include="Title.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="LastBossNode.cpp">
+    <ClCompile Include="Boss2Node.cpp" />
+    <ClCompile Include="AutoBullet.cpp" />
+    <ClCompile Include="Danger.cpp" />
+    <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossNode.cpp" />
+    <ClCompile Include="LastBossScene.cpp" />
+    <ClCompile Include="WallSpike.cpp" />
+    <ClCompile Include="Boss1Node.cpp">
       <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
     </ClCompile>
-    <ClCompile Include="WallSpike.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoBullet.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Danger.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
     <ClCompile Include="EndingScene.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1Node.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="WarningObject.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
+      <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

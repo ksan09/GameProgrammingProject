@@ -178,6 +178,7 @@
     <ClInclude Include="Boss1Node.h" />
     <ClInclude Include="Boss1Scene.h" />
     <ClInclude Include="Boss2.h" />
+    <ClInclude Include="Boss2Node.h" />
     <ClInclude Include="Boss2Scene.h" />
     <ClInclude Include="Boss3.h" />
     <ClInclude Include="Boss3Node.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="Boss1Node.cpp" />
     <ClCompile Include="Boss1Scene.cpp" />
     <ClCompile Include="Boss2.cpp" />
+    <ClCompile Include="Boss2Node.cpp" />
     <ClCompile Include="Boss2Scene.cpp" />
     <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="Boss3Node.cpp" />
