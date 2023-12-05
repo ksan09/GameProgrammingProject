@@ -241,26 +241,13 @@
     <ClInclude Include="Start_Scene.h">
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h" />
-    <ClInclude Include="GameRule.h" />
-    <ClInclude Include="LastBoss.h">
-      <Filter>Engine\04. Object\Boss</Filter>
+    <ClInclude Include="GameRule.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="LastBossScene.h">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    <ClInclude Include="Title.h">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClInclude>
-    <ClInclude Include="LastBossNode.h">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="WallSpike.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="AutoBullet.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Danger.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
+    <ClInclude Include="Boss2Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -408,25 +395,12 @@
     <ClCompile Include="Start_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="GameRule.cpp" />
-    <ClCompile Include="LastBoss.cpp">
-      <Filter>Engine\04. Object\Boss</Filter>
+    <ClCompile Include="GameRule.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="LastBossScene.cpp">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
+    <ClCompile Include="Title.cpp">
+      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
     </ClCompile>
-    <ClCompile Include="LastBossNode.cpp">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="WallSpike.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoBullet.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Danger.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
+    <ClCompile Include="Boss2Node.cpp" />
   </ItemGroup>
 </Project>

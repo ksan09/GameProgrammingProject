@@ -28,7 +28,8 @@ void Boss2Scene::Init()
 	AddObject(pBlock1, OBJECT_GROUP::OBJ);
 
 	Boss2* pBoss = new Boss2(pObj);
-	pBoss->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 256.f - 12.f));
+	//pBoss->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 256.f - 12.f));
+	pBoss->SetPos(Vec2(32, 128));
 	AddObject(pBoss, OBJECT_GROUP::BOSS);
 
 	srand((unsigned int)time(nullptr));

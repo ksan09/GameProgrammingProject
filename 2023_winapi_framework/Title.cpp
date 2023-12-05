@@ -30,9 +30,9 @@ void Title::Update()
 	if (onGameRule)
 		return;
 
-	if (KEY_DOWN(KEY_TYPE::DOWN) && index < 2)
+	if (KEY_DOWN(KEY_TYPE::DOWN) || KEY_DOWN(KEY_TYPE::S) && index < 2)
 		index += 1;
-	if (KEY_DOWN(KEY_TYPE::UP) && index > 0)
+	if (KEY_DOWN(KEY_TYPE::UP) || KEY_DOWN(KEY_TYPE::W) && index > 0)
 		index -= 1;
 
 
