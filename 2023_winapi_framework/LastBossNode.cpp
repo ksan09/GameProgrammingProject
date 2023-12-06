@@ -60,6 +60,7 @@ NODE_STATE LastBossPatternNode1::OnUpdate()
 	{
 		if (m_fCurTime >= 0.3f)
 		{
+			ResMgr::GetInst()->Play(L"SpikeUp");
 			Core::GetInst()->Shake(0.15f, 1.5f);
 
 			m_fCurTime = 0.f;
@@ -82,14 +83,14 @@ NODE_STATE LastBossPatternNode1::OnUpdate()
 		}
 		m_isSpikeSpawn = true;
 
-		if (m_fCurTime >= 1.f)
+		if (m_fCurTime >= 0.5f)
 		{
 			m_isDelay = true;
 			m_pOwner->GetAnimator()->PlayAnim(L"LB_Idle", true);
 			m_fCurTime = 0.f;
 		}
 	}
-	else if (m_fCurTime < 2.f)
+	else if (m_fCurTime < 2.7f)
 	{
 		// 방향으로 밀기
 		Vec2 pos = m_pTarget->GetPos();
@@ -192,6 +193,7 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 		if (m_fCurTime >= 0.3f)
 		{
 			ShotAutoBullet();
+			ResMgr::GetInst()->Play(L"SpikeUp");
 			Core::GetInst()->Shake(0.15f, 1.5f);
 
 			m_fCurTime = 0.f;
@@ -202,6 +204,8 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 	{
 		if (m_fCurTime >= 0.8f)
 		{
+
+
 			m_isDelay = true;
 			m_pOwner->GetAnimator()->PlayAnim(L"LB_Move", true);
 			m_fCurTime = 0.f;
@@ -215,6 +219,7 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 
 		if (m_fCurTime >= 0.4f)
 		{
+			ResMgr::GetInst()->Play(L"Bullet");
 			m_fCurTime = 0.f;
 			m_iCurCount++;
 
@@ -244,6 +249,7 @@ void LastBossPatternNode2::OnStop()
 
 void LastBossPatternNode2::ShotAutoBullet()
 {
+	ResMgr::GetInst()->Play(L"Bullet");
 	for (int i = 0; i <= 6; ++i)
 	{
 		if (i == 0)
@@ -262,6 +268,7 @@ void LastBossPatternNode2::ShotAutoBullet()
 
 void LastBossPatternNode2::ShotBullet()
 {
+	ResMgr::GetInst()->Play(L"Bullet");
 	for (int i = -1; i <= 1; ++i)
 	{
 		if (i == 0)
@@ -294,9 +301,10 @@ LastBossPatternNode3::LastBossPatternNode3(Object* owner, Object* target)
 	, m_fRightPosX(WINDOW_WIDTH - 32)
 	, m_isDelay(false)
 	, m_iCurCount(0)
-	, m_iBulletCount(15)
+	, m_iBulletCount(30)
 	, m_iPattern(0)
 	, m_isSkillOut(false)
+	, m_isBullet(false)
 {
 
 }
@@ -312,6 +320,7 @@ void LastBossPatternNode3::OnStart()
 	m_pOwner->GetAnimator()->PlayAnim(L"LB_Skill", false);
 	m_pOwner->GetAnimator()->Reset();
 
+	m_isBullet = rand() % 2;
 	m_isLeft = rand() % 2;
 	m_fCurTime = 0.f;
 	m_isSpikeSpawn = false;
@@ -330,6 +339,7 @@ NODE_STATE LastBossPatternNode3::OnUpdate()
 	{
 		if (m_fCurTime >= 0.3f)
 		{
+			ResMgr::GetInst()->Play(L"SpikeUp");
 			Core::GetInst()->Shake(0.15f, 1.5f);
 
 			m_fCurTime = 0.f;
@@ -355,7 +365,7 @@ NODE_STATE LastBossPatternNode3::OnUpdate()
 	else if (m_fCurTime < 3.f)
 	{
 		// 총알 및 몬스터 패턴
-		if (m_iCurCount < m_iBulletCount && m_fCurTime >= 0.2f)
+		if (m_iCurCount < m_iBulletCount && m_fCurTime >= 0.1f)
 		{
 			m_fCurTime = 0;
 			m_iCurCount++;
@@ -380,13 +390,27 @@ void LastBossPatternNode3::ShotBullet()
 	if (m_pTarget == nullptr)
 		return;
 
-	ResMgr::GetInst()->Play(L"Bullet");
+	ResMgr::GetInst()->Play(L"MobShot");
 
-	DefaultMonster* bullet = new DefaultMonster;
-	//bullet->SetPos(Vec2(m_fPatternX[2][m_iCurCount - 1], m_fPatternY[2][m_iCurCount - 1]));
-	bullet->SetPos(Vec2(m_fPatternX[m_iPattern][m_iCurCount - 1], m_fPatternY[m_iPattern][m_iCurCount - 1]));
-	bullet->GetRigidbody2D()->SetUseGravity(false);
-	bullet->SetBlock((Vec2(32.f, 32.f)));
-	bullet->GetRigidbody2D()->SetVelocity(Vec2((m_fPatternX[m_iPattern][m_iCurCount - 1] > 500.f ? -1.f : 1.f) * 300.f, 0.f));
-	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+	int cnt = (m_iCurCount + 1) / 2;
+
+	if (m_isBullet)
+	{
+		Bullet* bullet = new Bullet;
+		bullet->SetPos(Vec2(m_fPatternX[m_iPattern][cnt - 1], m_fPatternY[m_iPattern][cnt - 1]));
+		bullet->GetRigidbody2D()->SetVelocity(Vec2((m_fPatternX[m_iPattern][cnt - 1] > 500.f ? -1.f : 1.f) * 500.f, 0.f));
+		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+	}
+	else
+	{
+		DefaultMonster* bullet = new DefaultMonster;
+		//bullet->SetPos(Vec2(m_fPatternX[2][m_iCurCount - 1], m_fPatternY[2][m_iCurCount - 1]));
+		bullet->SetPos(Vec2(m_fPatternX[m_iPattern][cnt - 1], m_fPatternY[m_iPattern][cnt - 1]));
+		bullet->GetRigidbody2D()->SetUseGravity(false);
+		bullet->SetBlock((Vec2(32.f, 32.f)));
+		bullet->GetRigidbody2D()->SetVelocity(Vec2((m_fPatternX[m_iPattern][cnt - 1] > 500.f ? -1.f : 1.f) * 500.f, 0.f));
+		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+	}
+
+	
 }

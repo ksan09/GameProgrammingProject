@@ -44,7 +44,9 @@ void LastBossScene::Init()
 	Vec2 vResolution = Core::GetInst()->GetResolution();
 
 	// 사운드 세팅
-
+	ResMgr::GetInst()->LoadSound(L"SpikeUp", L"Sound\\SpikeSpawn.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Bullet", L"Sound\\BulletShoot.wav", false);
+	ResMgr::GetInst()->LoadSound(L"MobShot", L"Sound\\MobShot.wav", false);
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER_DIR_COL, OBJECT_GROUP::OBJ);

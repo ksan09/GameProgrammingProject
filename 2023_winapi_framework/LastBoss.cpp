@@ -15,6 +15,7 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "EventMgr.h"
+#include "Core.h"
 
 LastBoss::LastBoss(Object* target)
 	: m_iHp(4)
@@ -82,7 +83,7 @@ LastBoss::LastBoss(Object* target)
 #pragma endregion
 	//
 	//여기에 AI짜서 넣어야 함
-	//RepeatNode* rootNode = new RepeatNode(pattern2Node);
+	//RepeatNode* rootNode = new RepeatNode(pattern3Node);
 	RepeatNode* rootNode = new RepeatNode(randPatternNode);
 	m_pTree = new BehaviorTree(rootNode);
 }
@@ -102,9 +103,16 @@ void LastBoss::Update()
 		m_iCurTime += fDT;
 		if (m_iCurTime >= m_fSpawnTime)
 		{
-			GetAnimator()->PlayAnim(L"LB_Appear", false);
 			GetAnimator()->Update();
-			if (m_iCurTime >= m_fSpawnTime + 1.6f)
+			if (m_iCurTime >= 0.3f)
+			{
+				ResMgr::GetInst()->Play(L"SpikeUp");
+				Core::GetInst()->Shake(0.1f, 1);
+				m_fSpawnTime -= m_iCurTime;
+				m_iCurTime = 0;
+			}
+
+			if (m_fSpawnTime <= -1.f)
 			{
 				m_isSpawn = true;
 				GetAnimator()->PlayAnim(L"LB_Idle", true);
