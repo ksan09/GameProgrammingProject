@@ -263,6 +263,9 @@
     <ClInclude Include="WarningObject.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
+    <ClInclude Include="playerDieScene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -431,6 +434,9 @@
     </ClCompile>
     <ClCompile Include="WarningObject.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDieScene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

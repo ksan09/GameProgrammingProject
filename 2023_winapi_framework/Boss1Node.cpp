@@ -22,12 +22,11 @@ RandomPatternNode1::~RandomPatternNode1()
 
 void RandomPatternNode1::OnStart()
 {
-	m_iSelect = rand() % m_pChildren.size();
 }
 
 NODE_STATE RandomPatternNode1::OnUpdate()
 {
-	return m_pChildren[m_iSelect]->Update();
+	return m_pChildren[m_iSelect % m_pChildren.size()]->Update();
 }
 
 void RandomPatternNode1::OnStop()

@@ -55,23 +55,18 @@ Boss1::Boss1(Object* target)
 
 
 	SequenceNode* pattern1SeqNode = new SequenceNode();
-	RandomPatternNode1* randMoveNode = new RandomPatternNode1();
 	RandomPatternNode1* randPatternNode = new RandomPatternNode1();
 
 #pragma region 점프 노드
 
-	JumpNode* moveRightNode = new JumpNode(this, m_pTarget->GetPos(), 500);
-
-	//randMoveNode->RegisterChild(moveRightNode);
-
-	//randPatternNode->RegisterChild(randMoveNode);
+	JumpNode* jumpNode = new JumpNode(this, m_pTarget->GetPos(), 500);
 #pragma endregion
 
 	// 공격 노드
 	BoundMonsterSpawnPattern1Node1* pattern1 = new BoundMonsterSpawnPattern1Node1(this, m_pTarget);
 
-	pattern1SeqNode->RegisterChild(moveRightNode);
 	pattern1SeqNode->RegisterChild(pattern1);
+	pattern1SeqNode->RegisterChild(jumpNode);
 
 	randPatternNode->RegisterChild(pattern1SeqNode);
 
@@ -128,19 +123,23 @@ void Boss1::ExitCollision(Collider* _pOther)
 	{
 		m_isGround = false;
 		GetRigidbody2D()->SetUseGravity(true);
-		GetAnimator()->PlayAnim(L"Boss1_JumpUp", true);
+		GetAnimator()->PlayAnim(L"Boss1_JumpUp", false);
 	}
 }
 
 void Boss1::EnterCollision(Collider* _pOther)
 {
-	if (m_isDamage) return;
-
+	//if (m_isDamage) return;
 	const Object* pOtherObj = _pOther->GetObj();
 
 	if (pOtherObj->GetName() == L"Ground")
 	{
+		if (!m_isGround)
+			GetAnimator()->PlayAnim(L"Boss1_FallDown", false);
+
 		m_isGround = true;
+
+		GetAnimator()->PlayAnim(L"Boss1_Idle", true);
 
 		GetRigidbody2D()->Stop();
 		GetRigidbody2D()->SetUseGravity(false);
@@ -165,6 +164,7 @@ void Boss1::Render(HDC _dc)
 
 void Boss1::Die()
 {
+	//EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
 	EventMgr::GetInst()->DeleteObject(this);
 	m_isDie = true;
 }
