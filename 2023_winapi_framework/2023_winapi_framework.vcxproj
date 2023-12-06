@@ -223,9 +223,11 @@
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="Start_Scene.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextObject.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WallSpike.h" />
     <ClInclude Include="WarningObject.h" />
@@ -281,9 +283,11 @@
     <ClCompile Include="Spike.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="Start_Scene.cpp" />
+    <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="WallSpike.cpp" />
     <ClCompile Include="WarningObject.cpp" />

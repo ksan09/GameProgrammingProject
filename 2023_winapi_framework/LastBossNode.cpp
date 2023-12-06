@@ -210,7 +210,7 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 	else
 	{
 		Vec2 pos = m_pOwner->GetPos();
-		pos.x += m_iDirX * 400.f * fDT;
+		pos.x += m_iDirX * (m_iCurCount % 3 == 1 ? 500.f : 200.f) * fDT;
 		m_pOwner->SetPos(pos);
 
 		if (m_fCurTime >= 0.4f)
@@ -222,6 +222,11 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 
 			if (m_iDirX > 0) m_iDirX = -1;
 			else m_iDirX = 1;
+
+			Bullet* bullet = new Bullet();
+			bullet->SetPos(m_pOwner->GetPos());
+			bullet->GetRigidbody2D()->SetVelocity({ 0, -800 });
+			SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 		}
 
 		if (m_iCurCount >= m_iBulletCount)

@@ -7,6 +7,7 @@
 #include "Boss3Scene.h"
 #include "LastBossScene.h"
 #include "EndingScene.h"
+#include "TutorialScene.h"
 
 void SceneMgr::Init()
 {
@@ -14,6 +15,7 @@ void SceneMgr::Init()
 	// �� ���
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"StageSelect_Scene",std::make_shared<StageSelectScene>());
+	RegisterScene(L"Tutorial_Scene",std::make_shared<TutorialScene>());
 	RegisterScene(L"Boss1_Scene", std::make_shared<Boss1Scene>());
 	RegisterScene(L"Boss2_Scene", std::make_shared<Boss2Scene>());
 	RegisterScene(L"Boss3_Scene", std::make_shared<Boss3Scene>());

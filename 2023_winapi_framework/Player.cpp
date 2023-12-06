@@ -40,7 +40,7 @@ Player::Player()
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(16.f,36.f));
+	GetCollider()->SetScale(Vec2(16.f,30.f));
 	GetCollider()->SetOffSetPos(Vec2(0.f, 4.f));
 	// 콜라이더 끝부분마다 감지용 콜라이더 오브젝트 4개 생성해서 감지하기
 #pragma region Create PlayerDirCol
@@ -54,11 +54,11 @@ Player::Player()
 
 	PlayerDirCollider* m_pDirTopCol = new PlayerDirCollider;
 	m_pDirTopCol->m_pOwner = this;
-	m_pDirTopCol->SetCollider(DIR::TOP, { 15.5f, 5.f }, { 0.f, -15.f });
+	m_pDirTopCol->SetCollider(DIR::TOP, { 15.5f, 15.f }, { 0.f, -10.f });
 
 	PlayerDirCollider* m_pDirBottomCol = new PlayerDirCollider;
 	m_pDirBottomCol->m_pOwner = this;
-	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 15.5f, 15.f }, { 0.f, 28.f });
+	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 15.5f, 20.f }, { 0.f, 25.f });
 
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirLeftCol, OBJECT_GROUP::PLAYER_DIR_COL);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirRightCol, OBJECT_GROUP::PLAYER_DIR_COL);
