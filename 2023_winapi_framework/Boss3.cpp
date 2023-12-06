@@ -72,7 +72,7 @@ Boss3::Boss3(Object* target)
 	// MoveNode
 	MoveNode* moveUpNode = new MoveNode(this, Vec2(WINDOW_WIDTH / 2, 64), 300);
 	// Boss3Pattern2Node
-	Boss3Pattern2Node* pattern2Node = new Boss3Pattern2Node();
+	Boss3Pattern2Node* pattern2Node = new Boss3Pattern2Node(this, m_pTarget);
 
 	pattern2SeqNode->RegisterChild(moveUpNode);
 	pattern2SeqNode->RegisterChild(pattern2Node);

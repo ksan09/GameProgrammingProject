@@ -48,7 +48,7 @@ class Boss3Pattern2Node
 	: public ActionNode
 {
 public:
-	Boss3Pattern2Node();
+	Boss3Pattern2Node(Object* owner, Object* target);
 	~Boss3Pattern2Node();
 public:
 	virtual void OnStart() override;
@@ -59,10 +59,10 @@ private:
 	float m_fDelaySpikeSpawn;
 	float m_fWaitSpikeDelete;
 	float m_fCurTime;
-	// 바닥에 위험표시
-	// 떠다니는 몬스터 4마리 생성
-	// 위험표시 제거 후 0.1초 후 가시 생성
-	// 5초 기다린 후 가시 제거
+private:
+	Object* m_pOwner;
+	Object* m_pTarget;
+	bool is_shot;
 };
 
 class MoveNode

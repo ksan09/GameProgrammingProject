@@ -6,6 +6,7 @@
 #include "DefaultMonster.h"
 #include "Spike.h"
 #include "Bullet.h"
+#include "AutoBullet.h"
 #include "ResMgr.h"
 
 RandomPatternNode::RandomPatternNode()
@@ -76,7 +77,7 @@ NODE_STATE BoundMonsterSpawnPattern1Node::OnUpdate()
 		m_fCurTime = 0;
 		m_iCurSpawnCount++;
 
-		if (m_iCurSpawnCount % 5 - 2 == 0)
+		if (m_iCurSpawnCount % 4 == 1)
 		{
 			SpawnBullet();
 		}
@@ -122,7 +123,7 @@ void BoundMonsterSpawnPattern1Node::SpawnBullet()
 
 	Bullet* bullet = new Bullet;
 	bullet->SetPos(pos);
-	bullet->GetRigidbody2D()->SetVelocity(dir * 300.f);
+	bullet->GetRigidbody2D()->SetVelocity(dir * 400.f);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 }
 
@@ -167,11 +168,14 @@ void MoveNode::OnStop()
 {
 }
 
-Boss3Pattern2Node::Boss3Pattern2Node()
+Boss3Pattern2Node::Boss3Pattern2Node(Object* owner, Object* target)
 	: m_fDangerDelay(1.f)
 	, m_fDelaySpikeSpawn(0.1f)
 	, m_fWaitSpikeDelete(4.5f)
 	, m_fCurTime(0.f)
+	, m_pOwner(owner)
+	, m_pTarget(target)
+	, is_shot(false)
 {
 }
 
@@ -193,11 +197,34 @@ void Boss3Pattern2Node::OnStart()
 
 	Spike* pSpike = new Spike(m_fWaitSpikeDelete);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
+
+	is_shot = false;
 }
 
 NODE_STATE Boss3Pattern2Node::OnUpdate()
 {
 	m_fCurTime += fDT;
+	if (!is_shot && m_fCurTime >= 1.f)
+	{
+		is_shot = true;
+		Vec2 ownerPos = m_pOwner->GetPos();
+		ResMgr::GetInst()->Play(L"Bullet");
+		for (int i = -2; i <= 2; ++i)
+		{
+			Vec2 pos = m_pTarget->GetPos();
+			pos.x += i * 200;
+			pos.y = WINDOW_HEIGHT;
+
+			Vec2 dir = Vec2(pos.x - ownerPos.x, pos.y - ownerPos.y);
+			dir.Normalize();
+
+			AutoBullet* bullet = new AutoBullet(m_pTarget);
+			bullet->SetPos(ownerPos);
+			bullet->GetRigidbody2D()->SetVelocity(Vec2(dir.x * 300, dir.y * 300));
+			SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+		}
+	}
+
 	if (m_fCurTime >= 6.f)
 		return NODE_STATE::SUCCESS;
 
@@ -228,6 +255,8 @@ void Boss3Pattern3Node::OnStart()
 	m_iCurShootCount = 0;
 	m_fCurTime = 0;
 	m_bSpikeSpawn = false;
+
+	
 }
 
 NODE_STATE Boss3Pattern3Node::OnUpdate()
@@ -253,7 +282,23 @@ NODE_STATE Boss3Pattern3Node::OnUpdate()
 	{
 		m_fCurTime = 0;
 		m_iCurShootCount++;
-		SpawnBullet();
+
+		if (m_iCurShootCount % 2 == 1)
+		{
+			ResMgr::GetInst()->Play(L"Bullet");
+			Vec2 ownerPos = m_pOwner->GetPos();
+			Vec2 pos = m_pTarget->GetPos();
+
+			Vec2 dir = Vec2(pos.x - ownerPos.x, pos.y - ownerPos.y);
+			dir.Normalize();
+
+			AutoBullet* bullet = new AutoBullet(m_pTarget);
+			bullet->SetPos(ownerPos);
+			bullet->GetRigidbody2D()->SetVelocity(Vec2(dir.x * 500, dir.y * 500));
+			SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
+		}
+		else
+			SpawnBullet();
 	}
 
 	return NODE_STATE::RUNNING;
