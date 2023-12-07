@@ -20,7 +20,7 @@ Title::Title()
 		Vec2(960.f, 640.f), Vec2(960.f, 0.f), 5, 0.01f);
 	GetAnimator()->PlayAnim(L"Title_Start", false, 1);
 }
-
+//
 Title::~Title()
 {
 }
