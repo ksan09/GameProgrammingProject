@@ -54,9 +54,9 @@ private:
 	float m_fSpawnTime;
 private:
 	float m_fDangerDelay;
+	float m_fDelaySpikeSpawn;
 	float m_fWaitSpikeDelete;
 private:
-	bool m_bSpikeSpawn;
 	bool m_isRight;
 };
 
@@ -96,10 +96,8 @@ public:
 	virtual void OnStop() override;
 private:
 	void SpawnObject();
-	void SpawnBullet();
 private:
 	float m_fCurTime;
-	float m_fBulletTime;
 	bool m_bSpawn;
 	int m_iSpawnCount;
 };
