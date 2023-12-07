@@ -19,32 +19,11 @@ void PlayerDieScene::Init()
 }
 
 void PlayerDieScene::Update()
-{/*
-	if (KEY_DOWN(KEY_TYPE::W) || KEY_DOWN(KEY_TYPE::UP))
-	{
-		m_iRestartColor = 200;
-		m_iExitColor = 0;
-		m_iMyIdxNum = 0;
-	}
-	else if (KEY_DOWN(KEY_TYPE::S) || KEY_DOWN(KEY_TYPE::DOWN))
-	{
-		m_iRestartColor = 0;
-		m_iExitColor = 200;
-		m_iMyIdxNum = 1;
-	}*/
-
+{
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
+		
 		EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
-		/*switch (m_iMyIdxNum)
-		{
-		case 0:
-			break;
-		case 1:
-			exit(1);
-		default:
-			break;
-		}*/
 	}
 }
 
@@ -68,10 +47,16 @@ void PlayerDieScene::ReStart(HDC _dc, HWND hWnd)
 	SetTextColor(_dc, RGB(255, 255, 255));
 	SetBkMode(_dc, 1);
 	HFONT hFont = CreateFont(m_iFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
-		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"DungGeunMo");
-	SelectObject(_dc, hFont);
+		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"DungGeunMo.ttf");
+	HFONT hDefaultFont = (HFONT)SelectObject(_dc, hFont);
 	RECT restartRect;
 	GetClientRect(hWnd, &restartRect);
 	DrawText(_dc, L"space바 입력 시 재시작", -1, &restartRect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-	//DeleteObject(hBrush);
+	SelectObject(_dc, hDefaultFont);
+
+	SetTextColor(_dc, RGB(0, 0, 0));
+	DeleteObject(g_hbrBackground);
+	DeleteObject(hFont);
+
+	
 }
