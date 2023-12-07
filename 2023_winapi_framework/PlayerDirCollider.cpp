@@ -43,6 +43,10 @@ void PlayerDirCollider::EnterCollision(Collider* _pOther)
 	{
 		JumpAbleObjectCheck();
 	}
+	if (m_eState == DIR::BOTTOM && objName == L"DamageObject")
+	{
+		m_pOwner->Die();
+	}
 	
 }
 

@@ -333,6 +333,8 @@ void Player::Jump()
 
 void Player::Die()
 {
+	if (m_isDie) return;
+
 	ResMgr::GetInst()->Play(L"Death");
 	// ¾ÆÁ÷ ¾È ¸¸µë
 	GetRigidbody2D()->SetVelocity({ 0.f, -300.f });

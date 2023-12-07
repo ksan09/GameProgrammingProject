@@ -83,14 +83,14 @@ NODE_STATE LastBossPatternNode1::OnUpdate()
 		}
 		m_isSpikeSpawn = true;
 
-		if (m_fCurTime >= 0.5f)
+		if (m_fCurTime >= 0.6f)
 		{
 			m_isDelay = true;
 			m_pOwner->GetAnimator()->PlayAnim(L"LB_Idle", true);
 			m_fCurTime = 0.f;
 		}
 	}
-	else if (m_fCurTime < 2.7f)
+	else if (m_fCurTime < 2.5f)
 	{
 		// 방향으로 밀기
 		Vec2 pos = m_pTarget->GetPos();
