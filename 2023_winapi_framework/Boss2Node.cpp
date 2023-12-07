@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "Block.h"
 #include "DefaultMonster.h"
+#include "BulletMonster.h"
 #include "Spike.h"
 #include "Bullet.h" 
 #include "Object.h"
@@ -91,9 +92,9 @@ Boss2Pattern1Node::Boss2Pattern1Node(Object* owner, Object* target)
 	, m_fCurTime(0.f)
 	, m_fSpawnTime(0)
 	, m_fDangerDelay(0.5f)
-	, m_fDelaySpikeSpawn(0.1f)
-	, m_fWaitSpikeDelete(4.5f)
+	, m_fWaitSpikeDelete(4.f)
 	, m_isRight(false)
+	, m_bSpikeSpawn(false)
 {
 }
 
@@ -107,8 +108,7 @@ void Boss2Pattern1Node::OnStart()
 
 	m_isRight = m_pOwner->GetPos().x > (WINDOW_WIDTH / 2);
 
-	Spike* pSpike = new Spike(m_fWaitSpikeDelete);
-	SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
+	m_bSpikeSpawn = false;
 }
 
 NODE_STATE Boss2Pattern1Node::OnUpdate()
@@ -116,8 +116,15 @@ NODE_STATE Boss2Pattern1Node::OnUpdate()
 	m_fCurTime += fDT;
 	m_fSpawnTime += fDT;
 
-	if (m_fCurTime >= 6.f)
+	if (m_fCurTime >= 5.f)
 		return NODE_STATE::SUCCESS;
+
+	if (m_fCurTime >= .5f && !m_bSpikeSpawn)
+	{
+		m_bSpikeSpawn = true;
+		Spike* pSpike = new Spike(m_fWaitSpikeDelete);
+		SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
+	}
 
 	if (m_fSpawnTime >= 1)
 	{
@@ -192,7 +199,7 @@ NODE_STATE Boss2Pattern2Node::OnUpdate()
 		}
 	}
 
-	if (m_iCurShootCount > m_iBulletCount)
+	if (m_fCurTime >= 1.1f)
 		return NODE_STATE::SUCCESS;
 
 	return NODE_STATE::RUNNING;
@@ -204,12 +211,8 @@ void Boss2Pattern2Node::OnStop()
 
 void Boss2Pattern2Node::SpawnBullet()
 {
-	if (m_pTarget == nullptr)
-		return;
-
 	ResMgr::GetInst()->Play(L"Bullet");
 
-	Vec2 targetPos = m_pTarget->GetPos();
 	Vec2 pos = m_pOwner->GetPos();
 	Vec2 dir[3] = { Vec2(-1.5f,0.f), Vec2(1.5f,0.f) };
 
@@ -248,6 +251,7 @@ void Boss2Pattern2Node::SpawnObject()
 
 Boss2Pattern3Node::Boss2Pattern3Node(Object* owner, Object* target)
 	: m_fCurTime(0.f)
+	, m_fBulletTime(0.f)
 	, m_bSpawn(false)
 	, m_iSpawnCount(0)
 {
@@ -260,6 +264,7 @@ Boss2Pattern3Node::~Boss2Pattern3Node()
 void Boss2Pattern3Node::OnStart()
 {
 	m_fCurTime = 0;
+	m_fBulletTime = 0;
 	m_iSpawnCount = 0;
 	m_bSpawn = false;
 }
@@ -271,7 +276,7 @@ NODE_STATE Boss2Pattern3Node::OnUpdate()
 	if (m_fCurTime >= 0.5f && !m_bSpawn)
 	{
 		SpawnObject();
-		m_bSpawn = true;
+		SpawnBullet();
 		m_iSpawnCount++;
 	}
 	if (m_fCurTime >= 1.f)
@@ -279,7 +284,6 @@ NODE_STATE Boss2Pattern3Node::OnUpdate()
 		SpawnObject();
 		m_fCurTime = 0;
 		m_iSpawnCount++;
-		m_bSpawn = false;
 	}
 
 	if (m_iSpawnCount >= 10)
@@ -294,24 +298,25 @@ void Boss2Pattern3Node::OnStop()
 
 void Boss2Pattern3Node::SpawnObject()
 {
+	m_bSpawn = !m_bSpawn;
+
 	int x = (m_bSpawn ? 0 : WINDOW_WIDTH);
 	float speed = (m_bSpawn ? 500 : -500);
-	//if (m_bSpawn) x = WINDOW_WIDTH / 2 - 120;
-	//else x = WINDOW_WIDTH / 2 + 240;
 	speed += m_fCurTime;
 
-	DefaultMonster* pJDBlock = new DefaultMonster;
-	pJDBlock->GetRigidbody2D()->SetUseGravity(false);
-	pJDBlock->GetRigidbody2D()->SetVelocity(Vec2(speed, 10.f));
-	pJDBlock->SetPos({ x, WINDOW_HEIGHT });
-	pJDBlock->SetBlock((Vec2(32.f, 32.f)));
-	pJDBlock->SetSpeed(speed);
-	SceneMgr::GetInst()->GetCurScene()->AddObject(pJDBlock, OBJECT_GROUP::OBJ);
-
-	DefaultMonster* pJDBlockBounce = new DefaultMonster;
-	pJDBlockBounce->GetRigidbody2D()->SetVelocity(Vec2(-speed, 0.f));
+	BulletMonster* pJDBlockBounce = new BulletMonster;
+	pJDBlockBounce->GetRigidbody2D()->SetVelocity(Vec2(speed, 0.f));
+	pJDBlockBounce->SetDir(m_bSpawn);
 	pJDBlockBounce->SetPos({ x, 0 });
 	pJDBlockBounce->SetBlock((Vec2(32.f, 32.f)));
 	pJDBlockBounce->SetSpeed(speed);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pJDBlockBounce, OBJECT_GROUP::OBJ);
+}
+
+void Boss2Pattern3Node::SpawnBullet()
+{
+	Bullet* bullet = new Bullet;
+	bullet->SetPos(Vec2(0, WINDOW_HEIGHT / 2 + 175));
+	bullet->GetRigidbody2D()->SetVelocity(Vec2(400, 0));
+	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 }
