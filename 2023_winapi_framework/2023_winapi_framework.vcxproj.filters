@@ -285,6 +285,8 @@
     <ClInclude Include="playerDieScene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="BulletMonster.h" />
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -475,6 +477,8 @@
     </ClCompile>
     <ClCompile Include="PlayerDieScene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletMonster.cpp" />
     </ClCompile>
   </ItemGroup>
 </Project>
