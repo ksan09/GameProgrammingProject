@@ -244,7 +244,7 @@ void Boss1Pattern2Node::OnShoot()
 
 		Bullet* bullet = new Bullet;
 		bullet->SetPos(pos);
-		bullet->GetRigidbody2D()->SetVelocity(dir * 300.f);
+		bullet->GetRigidbody2D()->SetVelocity(dir * 400.f);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 	}
 }
