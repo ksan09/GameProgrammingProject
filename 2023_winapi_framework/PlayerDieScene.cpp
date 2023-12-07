@@ -47,7 +47,7 @@ void PlayerDieScene::ReStart(HDC _dc, HWND hWnd)
 	SetTextColor(_dc, RGB(255, 255, 255));
 	SetBkMode(_dc, 1);
 	HFONT hFont = CreateFont(m_iFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
-		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"DungGeunMo.ttf");
+		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"DungGeunMo");
 	HFONT hDefaultFont = (HFONT)SelectObject(_dc, hFont);
 	RECT restartRect;
 	GetClientRect(hWnd, &restartRect);
