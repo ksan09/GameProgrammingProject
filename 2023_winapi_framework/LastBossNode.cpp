@@ -95,6 +95,10 @@ NODE_STATE LastBossPatternNode1::OnUpdate()
 		// 방향으로 밀기
 		Vec2 pos = m_pTarget->GetPos();
 		pos.x += (m_isLeft ? -200 : 200) * fDT;
+		if (pos.x < 0)
+			pos.x = 0;
+		else if (pos.x > WINDOW_WIDTH)
+			pos.x = WINDOW_WIDTH;
 		m_pTarget->SetPos(pos);
 
 		// 총알 및 몬스터 패턴

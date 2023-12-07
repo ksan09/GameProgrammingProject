@@ -148,7 +148,7 @@ void Player::Update()
 		if (m_fCurTime >= 2.f)
 		{
 			ResMgr::GetInst()->Play(L"StageChange");
-			EventMgr::GetInst()->SceneChange(L"PlayerDie_Scene");
+			EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
 
 		}
 	}

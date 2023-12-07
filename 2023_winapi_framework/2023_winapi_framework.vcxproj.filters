@@ -1,484 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{8bad4304-c32a-48ef-bcf0-36a6875db7c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Default">
-      <UniqueIdentifier>{729de028-2ec8-4107-bc6e-7290260ba2ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\01. Header">
-      <UniqueIdentifier>{f744c4df-5058-41af-9b15-8a55b359a55b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\02. Core">
-      <UniqueIdentifier>{36866645-1205-4566-96b5-6cbb1049bb28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager">
-      <UniqueIdentifier>{25917da2-696d-4deb-98bc-c6aeadebc2bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\KeyManager">
-      <UniqueIdentifier>{316ebba8-e898-442d-8027-c572b60a367e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\TimeManager">
-      <UniqueIdentifier>{a185608d-d05f-4722-9f65-1db533791c8e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object">
-      <UniqueIdentifier>{d0ec7a0e-5d77-465a-9b52-6e4c5d19c1cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\05. Scene">
-      <UniqueIdentifier>{38d5afa3-cafa-42db-b060-b79278a5375a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\SceneManager">
-      <UniqueIdentifier>{54fae8e8-e326-4516-9d2f-325d02d6cd53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\05. Scene\MainScene">
-      <UniqueIdentifier>{778388a4-812c-4f2f-bf25-b2a688d9477f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\MainObject">
-      <UniqueIdentifier>{98af6e95-a7bc-4285-84a0-cb2e770cefa1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\06. Resource">
-      <UniqueIdentifier>{baacb026-a0b3-4c36-87be-c02f2586d26b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\PathMgr">
-      <UniqueIdentifier>{74ab55a9-9601-472c-9883-01a8f1f8413f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\ResMgr">
-      <UniqueIdentifier>{d478c39a-9d43-4a1b-b9f4-226747582b1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\07. Component">
-      <UniqueIdentifier>{a72219c4-1f53-4d42-868c-88db0b756faf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\CollisionMgr">
-      <UniqueIdentifier>{f563c11d-b9a3-47c6-b8ee-28920e51bc3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\EventMgr">
-      <UniqueIdentifier>{c3a341bd-ab64-4942-8210-206b9a88ce9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\08. Module">
-      <UniqueIdentifier>{b8698270-780f-4bb6-bf63-bf69c99fa2ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\BlockObject">
-      <UniqueIdentifier>{d65191d2-4b38-459d-bee4-b395ca9209b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\BlockObject\ObjectCol">
-      <UniqueIdentifier>{38a4752c-9a0a-48e6-805f-0fd229e909ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. BehaviorTree">
-      <UniqueIdentifier>{f25a5ff7-f351-47af-a383-4c9bcd815a07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. BehaviorTree\AI">
-      <UniqueIdentifier>{4090c087-0cf8-4a58-b091-3f95b49f583c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. BehaviorTree\AI\Node">
-      <UniqueIdentifier>{c04744f9-42f0-4635-a265-fedd379015f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. BehaviorTree\AI\ActionNode">
-      <UniqueIdentifier>{a21637f9-2894-4160-b0e0-af1d9b2bf6b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\Boss">
-      <UniqueIdentifier>{41627e2a-bc6a-47c2-a5e2-7d50bdb08782}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\05. Scene\MainScene\BossScene">
-      <UniqueIdentifier>{65df0fd5-6ec9-45ea-aea2-36e29f280daa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\05. Scene\MainScene\StartScene">
-      <UniqueIdentifier>{f858d097-8dac-4b03-8ec9-73e6c47addec}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Default</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Engine\02. Core</Filter>
-    </ClInclude>
-    <ClInclude Include="define.h">
-      <Filter>Engine\01. Header</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyMgr.h">
-      <Filter>Engine\03. Manager\KeyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Engine\01. Header</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeMgr.h">
-      <Filter>Engine\03. Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseWindow.h">
-      <Filter>Engine\02. Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Engine\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Vec2.h">
-      <Filter>Engine\01. Header</Filter>
-    </ClInclude>
-    <ClInclude Include="enums.h">
-      <Filter>Engine\01. Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\05. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMgr.h">
-      <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Res.h">
-      <Filter>Engine\06. Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Engine\06. Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="PathMgr.h">
-      <Filter>Engine\03. Manager\PathMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="ResMgr.h">
-      <Filter>Engine\03. Manager\ResMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectGDI.h">
-      <Filter>Engine\08. Module</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionMgr.h">
-      <Filter>Engine\03. Manager\CollisionMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="EventMgr.h">
-      <Filter>Engine\03. Manager\EventMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Animator.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="2023_winapi_framework.h">
-      <Filter>Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody2D.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDirCollider.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Block.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="DefaultMonster.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GroundCollider.h">
-      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
-    </ClInclude>
-    <ClInclude Include="BoundGroundCollider.h">
-      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
-    </ClInclude>
-    <ClInclude Include="FallingBlock.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>Engine\09. BehaviorTree\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="BehaviorTree.h">
-      <Filter>Engine\09. BehaviorTree\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss3.h">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss3Node.h">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="Spike.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1.h">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss2.h">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1Scene.h">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss2Scene.h">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss3Scene.h">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClInclude>
-    <ClInclude Include="StageSelectScene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Gate.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="HitEffect.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Start_Scene.h">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameRule.h">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1Node.h">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingScene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="WarningObject.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="AutoBullet.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss2Node.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="Danger.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="LastBoss.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="LastBossNode.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="LastBossScene.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="WallSpike.h">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClInclude>
-    <ClInclude Include="TextObject.h">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClInclude>
-    <ClInclude Include="TutorialScene.h">
-    </ClInclude>
-    <ClInclude Include="playerDieScene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletMonster.h" />
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="2023_winapi_framework.rc">
-      <Filter>리소스 파일</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="2023_winapi_framework.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Core.cpp">
-      <Filter>Engine\02. Core</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyMgr.cpp">
-      <Filter>Engine\03. Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeMgr.cpp">
-      <Filter>Engine\03. Manager\TimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseWindow.cpp">
-      <Filter>Engine\02. Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Engine\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Vec2.cpp">
-      <Filter>Engine\01. Header</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Engine\05. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMgr.cpp">
-      <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Engine\02. Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Res.cpp">
-      <Filter>Engine\06. Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Engine\06. Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PathMgr.cpp">
-      <Filter>Engine\03. Manager\PathMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="ResMgr.cpp">
-      <Filter>Engine\03. Manager\ResMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectGDI.cpp">
-      <Filter>Engine\08. Module</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionMgr.cpp">
-      <Filter>Engine\03. Manager\CollisionMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="EventMgr.cpp">
-      <Filter>Engine\03. Manager\EventMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Animator.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody2D.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDirCollider.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultMonster.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GroundCollider.cpp">
-      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
-    </ClCompile>
-    <ClCompile Include="BoundGroundCollider.cpp">
-      <Filter>Engine\04. Object\BlockObject\ObjectCol</Filter>
-    </ClCompile>
-    <ClCompile Include="FallingBlock.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>Engine\09. BehaviorTree\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="BehaviorTree.cpp">
-      <Filter>Engine\09. BehaviorTree\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss3.cpp">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss3Node.cpp">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="Spike.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1.cpp">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss2.cpp">
-      <Filter>Engine\04. Object\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss2Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss3Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene\BossScene</Filter>
-    </ClCompile>
-    <ClCompile Include="StageSelectScene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Gate.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="HitEffect.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Start_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameRule.cpp">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Engine\05. Scene\MainScene\StartScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1Node.cpp">
-      <Filter>Engine\09. BehaviorTree\AI\Node</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingScene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="WarningObject.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoBullet.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss2Node.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="Danger.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="LastBoss.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="LastBossNode.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="LastBossScene.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="WallSpike.cpp">
-      <Filter>Engine\09. BehaviorTree</Filter>
-    </ClCompile>
-    <ClCompile Include="TextObject.cpp">
-      <Filter>Engine\04. Object\BlockObject</Filter>
-    </ClCompile>
-    <ClCompile Include="TutorialScene.cpp">
-    </ClCompile>
-    <ClCompile Include="PlayerDieScene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="AutoBullet.cpp" />
+    <ClCompile Include="BaseWindow.cpp" />
+    <ClCompile Include="BehaviorTree.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Boss1.cpp" />
+    <ClCompile Include="Boss1Node.cpp" />
+    <ClCompile Include="Boss1Scene.cpp" />
+    <ClCompile Include="Boss2.cpp" />
+    <ClCompile Include="Boss2Node.cpp" />
+    <ClCompile Include="Boss2Scene.cpp" />
+    <ClCompile Include="Boss3.cpp" />
+    <ClCompile Include="Boss3Node.cpp" />
+    <ClCompile Include="Boss3Scene.cpp" />
+    <ClCompile Include="BoundGroundCollider.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletMonster.cpp" />
-    </ClCompile>
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionMgr.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Danger.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
+    <ClCompile Include="EventMgr.cpp" />
+    <ClCompile Include="FallingBlock.cpp" />
+    <ClCompile Include="GameRule.cpp" />
+    <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="GroundCollider.cpp" />
+    <ClCompile Include="DefaultMonster.cpp" />
+    <ClCompile Include="HitEffect.cpp" />
+    <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="LastBoss.cpp" />
+    <ClCompile Include="LastBossNode.cpp" />
+    <ClCompile Include="LastBossScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PathMgr.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerDieScene.cpp" />
+    <ClCompile Include="PlayerDirCollider.cpp" />
+    <ClCompile Include="Res.cpp" />
+    <ClCompile Include="ResMgr.cpp" />
+    <ClCompile Include="Rigidbody2D.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneMgr.cpp" />
+    <ClCompile Include="SelectGDI.cpp" />
+    <ClCompile Include="Spike.cpp" />
+    <ClCompile Include="StageSelectScene.cpp" />
+    <ClCompile Include="Start_Scene.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TutorialScene.cpp" />
+    <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="WallSpike.cpp" />
+    <ClCompile Include="WarningObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2023_winapi_framework.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animator.h" />
+    <ClInclude Include="AutoBullet.h" />
+    <ClInclude Include="BaseWindow.h" />
+    <ClInclude Include="BehaviorTree.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Boss1.h" />
+    <ClInclude Include="Boss1Node.h" />
+    <ClInclude Include="Boss1Scene.h" />
+    <ClInclude Include="Boss2.h" />
+    <ClInclude Include="Boss2Node.h" />
+    <ClInclude Include="Boss2Scene.h" />
+    <ClInclude Include="Boss3.h" />
+    <ClInclude Include="Boss3Node.h" />
+    <ClInclude Include="Boss3Scene.h" />
+    <ClInclude Include="BoundGroundCollider.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletMonster.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="CollisionMgr.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Danger.h" />
+    <ClInclude Include="define.h" />
+    <ClInclude Include="EndingScene.h" />
+    <ClInclude Include="enums.h" />
+    <ClInclude Include="EventMgr.h" />
+    <ClInclude Include="FallingBlock.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="GameRule.h" />
+    <ClInclude Include="Gate.h" />
+    <ClInclude Include="Ground.h" />
+    <ClInclude Include="GroundCollider.h" />
+    <ClInclude Include="DefaultMonster.h" />
+    <ClInclude Include="HitEffect.h" />
+    <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="LastBoss.h" />
+    <ClInclude Include="LastBossNode.h" />
+    <ClInclude Include="LastBossScene.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="PathMgr.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="playerDieScene.h" />
+    <ClInclude Include="PlayerDirCollider.h" />
+    <ClInclude Include="Res.h" />
+    <ClInclude Include="ResMgr.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Rigidbody2D.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="SelectGDI.h" />
+    <ClInclude Include="Spike.h" />
+    <ClInclude Include="StageSelectScene.h" />
+    <ClInclude Include="Start_Scene.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="TutorialScene.h" />
+    <ClInclude Include="Vec2.h" />
+    <ClInclude Include="WallSpike.h" />
+    <ClInclude Include="WarningObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="2023_winapi_framework.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="2023_winapi_framework.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
 </Project>
