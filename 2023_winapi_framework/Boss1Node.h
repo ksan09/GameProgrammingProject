@@ -50,17 +50,21 @@ class Boss1Pattern2Node
 	: public ActionNode
 {
 public:
-	Boss1Pattern2Node();
+	Boss1Pattern2Node(Object* Owner, Object* target);
 	~Boss1Pattern2Node();
 public:
 	virtual void OnStart() override;
 	virtual NODE_STATE OnUpdate() override;
 	virtual void OnStop() override;
+	void OnShoot();
 private:
 	float m_fDangerDelay;
 	float m_fDelaySpikeSpawn;
 	float m_fWaitSpikeDelete;
 	float m_fCurTime;
+	Object* m_pOwner;
+	Object* m_pSaveOwner;
+	Object* m_pTarget;
 	// 바닥에 위험표시
 	// 떠다니는 몬스터 4마리 생성
 	// 위험표시 제거 후 0.1초 후 가시 생성

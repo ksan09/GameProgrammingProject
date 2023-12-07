@@ -281,6 +281,8 @@
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
     <ClInclude Include="TutorialScene.h">
+    </ClInclude>
+    <ClInclude Include="playerDieScene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
   </ItemGroup>
@@ -470,6 +472,8 @@
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
     <ClCompile Include="TutorialScene.cpp">
+    </ClCompile>
+    <ClCompile Include="PlayerDieScene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
