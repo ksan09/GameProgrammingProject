@@ -64,7 +64,9 @@ Boss1::Boss1(Object* target)
 
 	// 공격 노드
 	BoundMonsterSpawnPattern1Node1* pattern1 = new BoundMonsterSpawnPattern1Node1(this, m_pTarget);
+	Boss1Pattern2Node* pattern2 = new Boss1Pattern2Node(this, m_pTarget);
 
+	pattern1SeqNode->RegisterChild(pattern2);
 	pattern1SeqNode->RegisterChild(pattern1);
 	pattern1SeqNode->RegisterChild(jumpNode);
 
