@@ -263,6 +263,7 @@
     <ClInclude Include="WarningObject.h">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClInclude>
+    <ClInclude Include="BulletMonster.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -432,5 +433,6 @@
     <ClCompile Include="WarningObject.cpp">
       <Filter>Engine\04. Object\BlockObject</Filter>
     </ClCompile>
+    <ClCompile Include="BulletMonster.cpp" />
   </ItemGroup>
 </Project>
