@@ -131,7 +131,6 @@ void Boss1::ExitCollision(Collider* _pOther)
 
 void Boss1::EnterCollision(Collider* _pOther)
 {
-	//if (m_isDamage) return;
 	const Object* pOtherObj = _pOther->GetObj();
 
 	if (pOtherObj->GetName() == L"Ground")
@@ -147,6 +146,7 @@ void Boss1::EnterCollision(Collider* _pOther)
 		GetRigidbody2D()->SetUseGravity(false);
 	}
 
+	if (m_isDamage) return;
 
 	if (pOtherObj->GetName() == L"DIR_BOTTOM_COL")
 	{
