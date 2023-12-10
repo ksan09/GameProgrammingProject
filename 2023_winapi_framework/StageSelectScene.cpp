@@ -10,6 +10,7 @@
 #include "KeyMgr.h"
 #include "Gate.h"
 #include "SceneMgr.h"
+#include "SaveLoadMgr.h"
 #include "TextObject.h"
 
 void StageSelectScene::Init()
@@ -24,6 +25,8 @@ void StageSelectScene::Init()
 	pBlock1->SetBlock((Vec2(WINDOW_WIDTH, 160)));
 	AddObject(pBlock1, OBJECT_GROUP::OBJ);
 
+	SaveLoadMgr::GetInst()->Init();
+
 #pragma region StageSelect
 	Gate* pTurotial = new Gate(false);
 	pTurotial->SetGateScene(L"Tutorial_Scene");
@@ -36,11 +39,11 @@ void StageSelectScene::Init()
 
 	Gate* pGate1 = new Gate(false);
 	pGate1->SetGateScene(L"Boss1_Scene");
-	pGate1->SetPos((Vec2(192+4, WINDOW_HEIGHT - 352 + 6)));
+	pGate1->SetPos((Vec2(192 + 4, WINDOW_HEIGHT - 352 + 6)));
 	AddObject(pGate1, OBJECT_GROUP::OBJ);
-	
+
 	TextObject* pText1 = new TextObject(L" Boss 1 ");
-	pText1->SetPos((Vec2(192 -22, WINDOW_HEIGHT - 412)));
+	pText1->SetPos((Vec2(192 - 22, WINDOW_HEIGHT - 412)));
 	AddObject(pText1, OBJECT_GROUP::OBJ);
 
 	Gate* pGate2 = new Gate(false);
@@ -51,7 +54,7 @@ void StageSelectScene::Init()
 	TextObject* pText2 = new TextObject(L" Boss 2 ");
 	pText2->SetPos((Vec2(WINDOW_WIDTH / 2 - 22, WINDOW_HEIGHT - 412)));
 	AddObject(pText2, OBJECT_GROUP::OBJ);
-	
+
 	Gate* pGate3 = new Gate(false);
 	pGate3->SetGateScene(L"Boss3_Scene");
 	pGate3->SetPos((Vec2(WINDOW_WIDTH - 192 + 4, WINDOW_HEIGHT - 352 + 6)));
@@ -60,13 +63,14 @@ void StageSelectScene::Init()
 	TextObject* pText3 = new TextObject(L" Boss 3 ");
 	pText3->SetPos((Vec2(WINDOW_WIDTH - 192 - 22, WINDOW_HEIGHT - 412)));
 	AddObject(pText3, OBJECT_GROUP::OBJ);
-	
+
 	Block* pBlock4 = new Block;
 	pBlock4->SetPos((Vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT - 192 - 96)));
 	pBlock4->SetBlock((Vec2(96.f, 32.f)));
 	pBlock4->SetSize(3);
 	AddObject(pBlock4, OBJECT_GROUP::OBJ);
-	
+
+	//값 받아서 다 깼으면 생성
 	Gate* pGateEnd = new Gate(true);
 	pGateEnd->SetGateScene(L"LastBoss_Scene");
 	pGateEnd->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 352 - 192 + 6)));
@@ -81,13 +85,13 @@ void StageSelectScene::Init()
 	pBlock7->SetBlock((Vec2(96.f, 32.f)));
 	pBlock7->SetSize(3);
 	AddObject(pBlock7, OBJECT_GROUP::OBJ);
-	
+
 	Block* pBlock5 = new Block;
 	pBlock5->SetPos((Vec2(192, WINDOW_HEIGHT - 192 - 96)));
 	pBlock5->SetBlock((Vec2(96.f, 32.f)));
 	pBlock5->SetSize(3);
 	AddObject(pBlock5, OBJECT_GROUP::OBJ);
-	
+
 	Block* pBlock6 = new Block;
 	pBlock6->SetPos((Vec2(WINDOW_WIDTH - 192, WINDOW_HEIGHT - 192 - 96)));
 	pBlock6->SetBlock((Vec2(96.f, 32.f)));
@@ -115,6 +119,7 @@ void StageSelectScene::Init()
 
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::BOTTOM_COL);
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::OBJ, OBJECT_GROUP::OBJ);
+	//SaveLoadMgr::GetInst()->Save();
 }
 
 void StageSelectScene::Update()

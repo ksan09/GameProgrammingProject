@@ -45,7 +45,7 @@ void Start_Scene::Update()
 {
 	Scene::Update();
 
-	if (!onGameRule && KEY_DOWN(KEY_TYPE::SPACE) || KEY_DOWN(KEY_TYPE::ENTER))
+	if (!onGameRule && KEY_DOWN(KEY_TYPE::SPACE) || KEY_DOWN(KEY_TYPE::ENTER) || KEY_DOWN(KEY_TYPE::LBUTTON))
 	{
 		switch (TitleScene->curIndex)
 		{
@@ -62,8 +62,7 @@ void Start_Scene::Update()
 			break;
 		}
 	}
-
-	if (onGameRule && KEY_DOWN(KEY_TYPE::ESC))
+	else if (onGameRule && KEY_DOWN(KEY_TYPE::ESC))
 		onGameRule = false;
 
 	if (onGameRule)
