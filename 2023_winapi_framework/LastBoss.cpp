@@ -169,5 +169,6 @@ void LastBoss::Render(HDC _dc)
 
 void LastBoss::Die()
 {
+	EventMgr::GetInst()->SceneChange(L"Start_Scene");
 	EventMgr::GetInst()->DeleteObject(this);
 }
