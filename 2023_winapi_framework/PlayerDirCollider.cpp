@@ -147,8 +147,7 @@ void PlayerDirCollider::BlockCheckOut()
 		m_pOwner->SetIsJump(true);
 		rb->SetUseGravity(true);
 	}
-
-	if (m_eState == DIR::LEFT || m_eState == DIR::RIGHT)
+	else if (m_eState == DIR::LEFT || m_eState == DIR::RIGHT)
 	{
 		rb->StopMoveLeft(false);
 		rb->StopMoveRight(false);

@@ -46,19 +46,19 @@ Player::Player()
 #pragma region Create PlayerDirCol
 	PlayerDirCollider* m_pDirLeftCol = new PlayerDirCollider;
 	m_pDirLeftCol->m_pOwner = this;
-	m_pDirLeftCol->SetCollider(DIR::LEFT, { 5.f, 40.f }, { -12.5f, 8.f });
+	m_pDirLeftCol->SetCollider(DIR::LEFT, { 8.f, 42.f }, { -10.5f, 8.f });
 
 	PlayerDirCollider* m_pDirRightCol = new PlayerDirCollider;
 	m_pDirRightCol->m_pOwner = this;
-	m_pDirRightCol->SetCollider(DIR::RIGHT, { 5.f, 40.f }, { 12.5f, 8.f });
+	m_pDirRightCol->SetCollider(DIR::RIGHT, { 8.f, 42.f }, { 10.5f, 8.f });
 
 	PlayerDirCollider* m_pDirTopCol = new PlayerDirCollider;
 	m_pDirTopCol->m_pOwner = this;
-	m_pDirTopCol->SetCollider(DIR::TOP, { 15.5f, 15.f }, { 0.f, -10.f });
+	m_pDirTopCol->SetCollider(DIR::TOP, { 15.5f, 20.f }, { 0.f, -10.f });
 
 	PlayerDirCollider* m_pDirBottomCol = new PlayerDirCollider;
 	m_pDirBottomCol->m_pOwner = this;
-	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 15.5f, 20.f }, { 0.f, 25.f });
+	m_pDirBottomCol->SetCollider(DIR::BOTTOM, { 15.5f, 18.f }, { 0.f, 25.f });
 
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirLeftCol, OBJECT_GROUP::PLAYER_DIR_COL);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(m_pDirRightCol, OBJECT_GROUP::PLAYER_DIR_COL);

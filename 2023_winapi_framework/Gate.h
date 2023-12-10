@@ -5,7 +5,7 @@ class Gate :
     public Object
 {
 public:
-    Gate(bool v);
+    Gate(int v);
     ~Gate();
 public:
     void Update() override;

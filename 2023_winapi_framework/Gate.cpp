@@ -8,11 +8,13 @@
 #include "Collider.h"
 #include "Object.h"
 
-Gate::Gate(bool v)
+Gate::Gate(int v)
 	: m_isLoadScene(false)
 {
-	if(v == true)
+	if(v == 1)
 		m_pTex = ResMgr::GetInst()->TexLoad(L"LastBossGate", L"Texture\\LastBossGate.bmp");
+	else if (v == 2)
+		m_pTex = ResMgr::GetInst()->TexLoad(L"NormalGate", L"Texture\\NormalGate.bmp");
 	else
 		m_pTex = ResMgr::GetInst()->TexLoad(L"Gate", L"Texture\\Gate.bmp");
 	SetName(L"Gate");
@@ -21,10 +23,19 @@ Gate::Gate(bool v)
 
 	CreateAnimator();
 	float size = 96.f;
-	GetAnimator()->CreateAnim(L"GateIdle", m_pTex,
-		Vec2(0, 0), Vec2(size, size), Vec2(size, 0.f), 9, 0.05f);
-	GetAnimator()->PlayAnim(L"GateIdle", true);
-
+	if (v <= 1)
+	{
+		GetAnimator()->CreateAnim(L"GateIdle", m_pTex,
+			Vec2(0, 0), Vec2(size, size), Vec2(size, 0.f), 9, 0.05f);	
+		GetAnimator()->PlayAnim(L"GateIdle", true);
+	}
+	else
+	{
+		GetAnimator()->CreateAnim(L"GateIdle", m_pTex,
+			Vec2(0, 0), Vec2(size, size), Vec2(size, 0.f), 1, 0.05f);
+		GetAnimator()->PlayAnim(L"GateIdle", false);
+	}
+	
 	CreateCollider();
 	GetCollider()->SetOffSetPos({ 0.f, 48.f });
 	GetCollider()->SetScale({ 16.f, 8.f });

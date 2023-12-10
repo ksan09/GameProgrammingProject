@@ -25,7 +25,7 @@ void StageSelectScene::Init()
 	AddObject(pBlock1, OBJECT_GROUP::OBJ);
 
 #pragma region StageSelect
-	Gate* pTurotial = new Gate(false);
+	Gate* pTurotial = new Gate(2);
 	pTurotial->SetGateScene(L"Tutorial_Scene");
 	pTurotial->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 160 + 6)));
 	AddObject(pTurotial, OBJECT_GROUP::OBJ);
@@ -67,7 +67,7 @@ void StageSelectScene::Init()
 	pBlock4->SetSize(3);
 	AddObject(pBlock4, OBJECT_GROUP::OBJ);
 	
-	Gate* pGateEnd = new Gate(true);
+	Gate* pGateEnd = new Gate(1);
 	pGateEnd->SetGateScene(L"LastBoss_Scene");
 	pGateEnd->SetPos((Vec2(WINDOW_WIDTH / 2 + 4, WINDOW_HEIGHT - 352 - 192 + 6)));
 	AddObject(pGateEnd, OBJECT_GROUP::OBJ);

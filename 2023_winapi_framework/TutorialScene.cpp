@@ -39,7 +39,7 @@ void TutorialScene::Init()
 	AddObject(pBlock1, OBJECT_GROUP::OBJ);
 	
 #pragma region Gate
-	Gate* pGate1 = new Gate(false);
+	Gate* pGate1 = new Gate(2);
 	pGate1->SetGateScene(L"StageSelect_Scene");
 	pGate1->SetPos((Vec2(WINDOW_WIDTH - 76, 128 + 6)));
 	AddObject(pGate1, OBJECT_GROUP::OBJ);
