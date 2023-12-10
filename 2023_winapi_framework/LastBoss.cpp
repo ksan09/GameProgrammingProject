@@ -173,5 +173,5 @@ void LastBoss::Die()
 	if (m_isDie) return;
 
 	m_isDie = true;
-	EventMgr::GetInst()->SceneChange(L"Start_Scene");
+	EventMgr::GetInst()->SceneChange(L"Ending_Scene");
 }
