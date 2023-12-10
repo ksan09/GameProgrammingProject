@@ -23,29 +23,38 @@ GameRule* PopUp;
 
 void Start_Scene::Init()
 {
-	Title* title = new Title;
-	title->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	title->SetScale(Vec2(960.f, 640.f));
-	AddObject(title, OBJECT_GROUP::DEFAULT);
-	TitleScene = title;
+	if (TitleScene == nullptr)
+	{
+		Title* title = new Title;
+		title->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+		title->SetScale(Vec2(960.f, 640.f));
+		TitleScene = title;
+	}
+	AddObject(TitleScene, OBJECT_GROUP::DEFAULT);
 
-	GameRule* gameRule = new GameRule;
-	gameRule->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	gameRule->SetScale(Vec2(800.f, 480.f));
-	AddObject(gameRule, OBJECT_GROUP::OBJ);
-	PopUp = gameRule;
+	if (PopUp == nullptr)
+	{
+		GameRule* gameRule = new GameRule;
+		gameRule->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+		gameRule->SetScale(Vec2(800.f, 480.f));
+		PopUp = gameRule;
+	}
+	AddObject(PopUp, OBJECT_GROUP::OBJ);
+	
 
 	//// 사운드 세팅
 	//ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	//ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	//ResMgr::GetInst()->Play(L"BGM"); 
+
+	
 }
 
 void Start_Scene::Update()
 {
 	Scene::Update();
 
-	if (!onGameRule && KEY_DOWN(KEY_TYPE::SPACE) || KEY_DOWN(KEY_TYPE::ENTER) || KEY_DOWN(KEY_TYPE::LBUTTON))
+	if (!onGameRule && (KEY_DOWN(KEY_TYPE::SPACE) || KEY_DOWN(KEY_TYPE::ENTER) || KEY_DOWN(KEY_TYPE::LBUTTON)))
 	{
 		switch (TitleScene->curIndex)
 		{
@@ -84,6 +93,9 @@ void Start_Scene::Render(HDC _dc)
 
 void Start_Scene::Release()
 {
+	TitleScene = nullptr;
+	PopUp = nullptr;
+
 	Scene::Release();
 	CollisionMgr::GetInst()->CheckReset();
 }
