@@ -10,6 +10,7 @@
 #include "Core.h"
 #include "WarningObject.h"
 #include "ResMgr.h"
+#include <cmath>
 
 
 RandomPatternNode1::RandomPatternNode1()
@@ -23,6 +24,7 @@ RandomPatternNode1::~RandomPatternNode1()
 
 void RandomPatternNode1::OnStart()
 {
+
 }
 
 NODE_STATE RandomPatternNode1::OnUpdate()
@@ -157,7 +159,7 @@ void JumpNode::OnStart()
 	m_pRb->SetVelocity({ vVelo.x, -800.f });
 
 
-	m_fDis = m_vEndPos.x - m_pOwner->GetPos().x;
+	m_fDis = m_vEndPos.x - vVelo.x;
 }
 
 NODE_STATE JumpNode::OnUpdate()
@@ -228,23 +230,23 @@ void Boss1Pattern2Node::OnStop()
 
 void Boss1Pattern2Node::OnShoot()
 {
-	if (m_pTarget == nullptr)
-		return;
-	int angle = 360 / 12;
+	ResMgr::GetInst()->Play(L"Bullet");
+	int numBullets = 12;
+	float angle = -(180.0f / numBullets);
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < numBullets; ++i)
 	{
-		ResMgr::GetInst()->Play(L"Bullet");
+		Vec2 pos = m_pOwner->GetPos();
 
-		Vec2 targetPos = m_pTarget->GetPos();
-		Vec2 pos = m_pSaveOwner->GetPos();
-		pos.y -= angle * i;
-		Vec2 dir = (targetPos - pos);
-		dir.Normalize();
+		float radians = (angle * i) * (3.141592653f / 180.0f);
+
+		pos.x += cosf(radians) * 100.0f;
+		pos.y += sinf(radians) * 100.0f;
 
 		Bullet* bullet = new Bullet;
 		bullet->SetPos(pos);
-		bullet->GetRigidbody2D()->SetVelocity(dir * 400.f);
+		bullet->GetRigidbody2D()->SetVelocity(Vec2(cosf(radians), sinf(radians)) * 400.0f);
+
 		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 	}
 }
