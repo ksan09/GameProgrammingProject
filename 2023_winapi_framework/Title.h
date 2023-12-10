@@ -16,5 +16,10 @@ private:
 public:
 	int curIndex;
 	bool onGameRule;
+private:
+	POINT mousePos;
+	RECT startRect;
+	RECT gameruleRect;
+	RECT exitRect;
 };
 

@@ -61,6 +61,7 @@
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="WallSpike.cpp" />
     <ClCompile Include="WarningObject.cpp" />
+    <ClCompile Include="SaveLoadMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2023_winapi_framework.h" />
@@ -129,6 +130,7 @@
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WallSpike.h" />
     <ClInclude Include="WarningObject.h" />
+    <ClInclude Include="SaveLoadMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />

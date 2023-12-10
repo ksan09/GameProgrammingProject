@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Core.h"
 #include "Title.h"
 #include "KeyMgr.h"
 #include "ResMgr.h"
@@ -8,6 +9,11 @@ Title::Title()
 	: m_pTex(nullptr)
 	, index(0)
 	, curIndex(0)
+	, onGameRule(false)
+	, mousePos()
+	, startRect({50, 320, 250, 400})
+	, gameruleRect({50, 420, 350, 500})
+	, exitRect({50, 520, 250, 600})
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Title", L"Texture\\Title-Sheet.bmp");
 
@@ -29,6 +35,17 @@ void Title::Update()
 {
 	if (onGameRule)
 		return;
+
+	GetCursorPos(&mousePos); // 마우스 커서 좌표 받기
+	// 우리가 가진 윈도우 창 기준으로 좌표 변경
+	ScreenToClient(Core::GetInst()->GetHwnd(), &mousePos);
+
+	if (PtInRect(&startRect, mousePos))
+		index = 0;
+	if (PtInRect(&gameruleRect, mousePos))
+		index = 1;
+	if (PtInRect(&exitRect, mousePos))
+		index = 2;
 
 	if (KEY_DOWN(KEY_TYPE::DOWN) || KEY_DOWN(KEY_TYPE::S) && index < 2)
 		index += 1;
