@@ -183,6 +183,10 @@ void Player::Update()
 #pragma endregion
 
 #pragma region Jump
+	if(KEY_DOWN(KEY_TYPE::Q))
+		EventMgr::GetInst()->SceneChange(L"Start_Scene");
+
+
 	if (m_isJump == false && m_isDie == false
 		&& (KEY_DOWN(KEY_TYPE::SPACE)
 			|| KEY_DOWN(KEY_TYPE::W)

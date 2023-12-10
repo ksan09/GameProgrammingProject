@@ -25,6 +25,7 @@ private:
     float m_iDamageDelayTime;
     bool m_isDamage;
 private:
+    bool m_isDie;
     bool m_isSpawn;
     float m_fSpawnTime;
 };

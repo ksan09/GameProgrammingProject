@@ -25,6 +25,7 @@ LastBoss::LastBoss(Object* target)
 	, m_isDamage(false)
 	, m_isSpawn(false)
 	, m_fSpawnTime(1.0f)
+	, m_isDie(false)
 {
 #pragma region Collider
 	CreateCollider();
@@ -169,6 +170,8 @@ void LastBoss::Render(HDC _dc)
 
 void LastBoss::Die()
 {
+	if (m_isDie) return;
+
+	m_isDie = true;
 	EventMgr::GetInst()->SceneChange(L"Start_Scene");
-	EventMgr::GetInst()->DeleteObject(this);
 }
