@@ -75,7 +75,7 @@ class JumpNode
 	: public ActionNode
 {
 public:
-	JumpNode(Object* owner, Vec2 endPos, float speed);
+	JumpNode(Object* owner, Object* endPos, float speed);
 	~JumpNode();
 public:
 	virtual void OnStart() override;
@@ -84,7 +84,7 @@ public:
 private:
 	Rigidbody2D* m_pRb;
 	Object* m_pOwner;
-	Vec2 m_vEndPos;
+	Object* m_vEndPos;
 	float m_fDis;
 	float m_fSpeed;
 	float m_fCurTime;

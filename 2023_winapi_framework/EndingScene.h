@@ -11,14 +11,11 @@ public:
 	void Update() override;
 	void Render(HDC _dc) override;
 private:
-	float m_fCurTime;
 	float m_iFontSize;
 	int x;
 	float y;
-	int deltaFontSize;
-	int windowHeight;
+	float saveY;
 	int idxNum;
-	wstring str;
     vector<wstring> strArr;
 };
 

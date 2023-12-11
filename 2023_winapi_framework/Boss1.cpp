@@ -59,7 +59,7 @@ Boss1::Boss1(Object* target)
 
 #pragma region 점프 노드
 
-	JumpNode* jumpNode = new JumpNode(this, m_pTarget->GetPos(), 500);
+	JumpNode* jumpNode = new JumpNode(this, m_pTarget, 500);
 #pragma endregion
 
 	// 공격 노드
