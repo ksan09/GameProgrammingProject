@@ -29,8 +29,8 @@ Boss1::Boss1(Object* target)
 
 #pragma region Collider
 	CreateCollider();
-	GetCollider()->SetScale({ 32.f, 32.f });
-	GetCollider()->SetOffSetPos({ 0.f, -24.f });
+	GetCollider()->SetScale({ 32.f, 38.f });
+	GetCollider()->SetOffSetPos({ 0.f, -18.f });
 	SetName(L"DamageAndJumpAbleObject");
 #pragma endregion
 
