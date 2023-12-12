@@ -14,6 +14,7 @@
 #include "TimeMgr.h"
 #include "EventMgr.h"
 #include "Boss1Node.h"
+#include "SaveLoadMgr.h"
 
 Boss1::Boss1(Object* target)
 	: m_iHp(4)
@@ -169,5 +170,5 @@ void Boss1::Die()
 	EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
 	EventMgr::GetInst()->DeleteObject(this);
 	m_isDie = true;
-
+	SaveLoadMgr::GetInst()->Stage1();
 }

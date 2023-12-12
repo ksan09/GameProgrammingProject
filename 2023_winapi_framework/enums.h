@@ -72,3 +72,10 @@ enum class NODE_STATE
 {
 	SUCCESS, FAILURE, RUNNING
 };
+
+enum class STAGE_CLEAR
+{
+	S1, S2, S3,
+	S12, S23, S13,
+	ALL
+};
