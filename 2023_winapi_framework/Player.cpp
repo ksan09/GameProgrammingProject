@@ -189,10 +189,6 @@ void Player::Update()
 			|| KEY_DOWN(KEY_TYPE::W)
 			|| KEY_DOWN(KEY_TYPE::UP)))
 	{
-		//
-		
-		//
-
 		Jump();
 	}
 	else if (m_isJump == true && m_isDoubleJump == false && m_isDie == false

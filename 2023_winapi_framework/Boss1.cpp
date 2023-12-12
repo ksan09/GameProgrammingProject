@@ -167,8 +167,7 @@ void Boss1::Render(HDC _dc)
 
 void Boss1::Die()
 {
-	EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
-	EventMgr::GetInst()->DeleteObject(this);
-	m_isDie = true;
 	SaveLoadMgr::GetInst()->Stage1();
+	EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
+	m_isDie = true;
 }
