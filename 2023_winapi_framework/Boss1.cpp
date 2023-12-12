@@ -30,8 +30,8 @@ Boss1::Boss1(Object* target)
 
 #pragma region Collider
 	CreateCollider();
-	GetCollider()->SetScale({ 32.f, 32.f });
-	GetCollider()->SetOffSetPos({ 0.f, -24.f });
+	GetCollider()->SetScale({ 32.f, 38.f });
+	GetCollider()->SetOffSetPos({ 0.f, -18.f });
 	SetName(L"DamageAndJumpAbleObject");
 #pragma endregion
 
@@ -60,7 +60,7 @@ Boss1::Boss1(Object* target)
 
 #pragma region 점프 노드
 
-	JumpNode* jumpNode = new JumpNode(this, m_pTarget->GetPos(), 500);
+	JumpNode* jumpNode = new JumpNode(this, m_pTarget, 500);
 #pragma endregion
 
 	// 공격 노드

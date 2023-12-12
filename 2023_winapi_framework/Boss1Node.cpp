@@ -129,7 +129,7 @@ void BoundMonsterSpawnPattern1Node1::SpawnBullet()
 	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet2, OBJECT_GROUP::OBJ);
 }
 
-JumpNode::JumpNode(Object* owner, Vec2 endPos, float speed)
+JumpNode::JumpNode(Object* owner, Object* endPos, float speed)
 	: m_pOwner(owner)
 	, m_vEndPos(endPos)
 	, m_fSpeed(speed)
@@ -159,19 +159,20 @@ void JumpNode::OnStart()
 	m_pRb->SetVelocity({ vVelo.x, -800.f });
 
 
-	m_fDis = m_vEndPos.x - vVelo.x;
 }
 
 NODE_STATE JumpNode::OnUpdate()
 {
-	if (m_fDis < 0)
+	m_fDis = m_vEndPos->GetPos().x - m_pOwner->GetPos().x;
+
+	if (m_fDis <= 0)
 	{
-		float x = m_pOwner->GetPos().x - 0.2f;
+		float x = m_pOwner->GetPos().x - 0.15f;
 		m_pOwner->SetPos({ x ,m_pOwner->GetPos().y });
 	}
 	else if (m_fDis > 0)
 	{
-		float x = m_pOwner->GetPos().x + 0.2f;
+		float x = m_pOwner->GetPos().x + 0.15f;
 		m_pOwner->SetPos({ x ,m_pOwner->GetPos().y });
 	}
 
@@ -231,7 +232,7 @@ void Boss1Pattern2Node::OnStop()
 void Boss1Pattern2Node::OnShoot()
 {
 	ResMgr::GetInst()->Play(L"Bullet");
-	int numBullets = 12;
+	int numBullets = 10;
 	float angle = -(180.0f / numBullets);
 
 	for (int i = 0; i < numBullets; ++i)
