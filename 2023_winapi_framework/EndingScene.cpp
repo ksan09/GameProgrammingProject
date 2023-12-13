@@ -58,7 +58,7 @@ void EndingScene::Render(HDC _dc)
 	HFONT hFont = CreateFont(m_iFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
 			CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, L"DungGeunMo");
 	SelectObject(_dc, hFont);
-
+	AddFontResourceW(L"DungGeunMo");
 	HWND hWnd = Core::GetInst()->GetHwnd();
 	RECT rect;
 	RECT rectBackGround;

@@ -13,9 +13,13 @@ TextObject::~TextObject()
 void TextObject::Render(HDC _dc)
 {
 	SetTextColor(_dc, RGB(0, 0, 0)); 
+
 	HFONT hFont = CreateFont(20, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
 		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, L"DungGeunMo");
 	SelectObject(_dc, hFont);
+
+	AddFontResourceW(L"DungGeunMo");
+
 	SetBkMode(_dc, TRANSPARENT);
 	SIZE textSize;
 	GetTextExtentPoint32(_dc, m_wText.c_str(), m_wText.length(), &textSize);
@@ -25,4 +29,6 @@ void TextObject::Render(HDC _dc)
 	pos.y -= textSize.cy / 2;  // Adjust the Y position for center alignment
 
 	TextOut(_dc, static_cast<int>(pos.x), static_cast<int>(pos.y), m_wText.c_str(), m_wText.length());
+
+	DeleteObject(hFont);
 }
