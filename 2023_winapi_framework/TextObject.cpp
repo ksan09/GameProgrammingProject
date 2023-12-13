@@ -21,5 +21,6 @@ void TextObject::Render(HDC _dc)
 	SetBkMode(_dc, TRANSPARENT);
 	Vec2 pos = GetPos();
 	TextOut(_dc, pos.x - 10, pos.y, m_wText.c_str(), m_wText.length());
+	DeleteObject(hFont);
 
 }

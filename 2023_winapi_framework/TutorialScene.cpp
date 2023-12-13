@@ -45,7 +45,7 @@ void TutorialScene::Init()
 	AddObject(pGate1, OBJECT_GROUP::OBJ);
 
 	TextObject* pText1 = new TextObject(L" Back ");
-	pText1->SetPos((Vec2(WINDOW_WIDTH - 76 - 20, 128 - 60)));
+	pText1->SetPos((Vec2(WINDOW_WIDTH - 76 - 14, 128 - 60)));
 	AddObject(pText1, OBJECT_GROUP::OBJ);
 #pragma endregion
 #pragma region Block
@@ -63,11 +63,11 @@ void TutorialScene::Init()
 #pragma endregion
 #pragma region Text
 	TextObject* jumpExplain = new TextObject(L"Press \"space\" to jump");
-	jumpExplain->SetPos(Vec2(WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT - 200));
+	jumpExplain->SetPos(Vec2(WINDOW_WIDTH / 2 - 60, WINDOW_HEIGHT - 220));
 	AddObject(jumpExplain, OBJECT_GROUP::EFFECT);
 
 	TextObject* jumpExplain2 = new TextObject(L"You can \"Double Jump\"");
-	jumpExplain2->SetPos(Vec2(WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT - 280));
+	jumpExplain2->SetPos(Vec2(WINDOW_WIDTH / 2 - 60, WINDOW_HEIGHT - 300));
 	AddObject(jumpExplain2, OBJECT_GROUP::EFFECT);
 
 	TextObject* jumpExplain3 = new TextObject(L"and reset \"Double Jump\"");
@@ -78,9 +78,13 @@ void TutorialScene::Init()
 	monsterExplain->SetPos(Vec2(WINDOW_WIDTH / 2 - 112 + 64, WINDOW_HEIGHT - 500));
 	AddObject(monsterExplain, OBJECT_GROUP::EFFECT);
 
-	TextObject* monsterExplain2 = new TextObject(L"If you touch a monster from the side, you die.");
-	monsterExplain2->SetPos(Vec2(WINDOW_WIDTH / 2 - 144 + 64, WINDOW_HEIGHT - 380 ));
+	TextObject* monsterExplain2 = new TextObject(L"If you touch a monster");
+	monsterExplain2->SetPos(Vec2(WINDOW_WIDTH / 2 + 96, WINDOW_HEIGHT - 435 ));
 	AddObject(monsterExplain2, OBJECT_GROUP::EFFECT);
+
+	TextObject* monsterExplain3 = new TextObject(L"from the side, you die.");
+	monsterExplain3->SetPos(Vec2(WINDOW_WIDTH / 2 + 96, WINDOW_HEIGHT - 415));
+	AddObject(monsterExplain3, OBJECT_GROUP::EFFECT);
 
 	TextObject* bulletExplain = new TextObject(L"If you get hit by a bullet, you're dead.");
 	bulletExplain->SetPos(Vec2(64, WINDOW_HEIGHT - 380));

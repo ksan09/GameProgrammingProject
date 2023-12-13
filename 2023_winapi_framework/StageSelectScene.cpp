@@ -43,7 +43,7 @@ void StageSelectScene::Init()
 	AddObject(pGate1, OBJECT_GROUP::OBJ);
 
 	TextObject* pText1 = new TextObject(L" Boss 1 ");
-	pText1->SetPos((Vec2(192 - 22, WINDOW_HEIGHT - 412)));
+	pText1->SetPos((Vec2(192 - 18, WINDOW_HEIGHT - 412)));
 	AddObject(pText1, OBJECT_GROUP::OBJ);
 
 	Gate* pGate2 = new Gate(false);
@@ -54,7 +54,7 @@ void StageSelectScene::Init()
 	AddObject(pGate2, OBJECT_GROUP::OBJ);
 
 	TextObject* pText2 = new TextObject(L" Boss 2 ");
-	pText2->SetPos((Vec2(WINDOW_WIDTH / 2 - 22, WINDOW_HEIGHT - 412)));
+	pText2->SetPos((Vec2(WINDOW_WIDTH / 2 - 18, WINDOW_HEIGHT - 412)));
 	AddObject(pText2, OBJECT_GROUP::OBJ);
 
 	Gate* pGate3 = new Gate(false);
@@ -65,7 +65,7 @@ void StageSelectScene::Init()
 	AddObject(pGate3, OBJECT_GROUP::OBJ);
 
 	TextObject* pText3 = new TextObject(L" Boss 3 ");
-	pText3->SetPos((Vec2(WINDOW_WIDTH - 192 - 22, WINDOW_HEIGHT - 412)));
+	pText3->SetPos((Vec2(WINDOW_WIDTH - 192 - 18, WINDOW_HEIGHT - 412)));
 	AddObject(pText3, OBJECT_GROUP::OBJ);
 
 	Block* pBlock4 = new Block;
@@ -82,7 +82,7 @@ void StageSelectScene::Init()
 		AddObject(pGateEnd, OBJECT_GROUP::OBJ);
 
 		TextObject* pTextE = new TextObject(L" Last Boss ");
-		pTextE->SetPos((Vec2(WINDOW_WIDTH / 2 - 32, WINDOW_HEIGHT - 412 - 192)));
+		pTextE->SetPos((Vec2(WINDOW_WIDTH / 2 - 28, WINDOW_HEIGHT - 412 - 192)));
 		AddObject(pTextE, OBJECT_GROUP::OBJ);
 	}
 
