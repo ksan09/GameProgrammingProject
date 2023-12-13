@@ -151,6 +151,5 @@ void Boss2::Render(HDC _dc)
 void Boss2::Die()
 {
 	EventMgr::GetInst()->SceneChange(L"StageSelect_Scene");
-	EventMgr::GetInst()->DeleteObject(this);
 	SaveLoadMgr::GetInst()->Stage2();
 }
