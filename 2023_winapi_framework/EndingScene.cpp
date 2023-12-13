@@ -45,7 +45,9 @@ void EndingScene::Update()
 		y = 0;
 
 		if (KEY_PRESS(KEY_TYPE::SPACE))
+		{
 			EventMgr::GetInst()->SceneChange(L"Start_Scene");
+		}
 	}
 	else
 			y += 0.2f;
@@ -53,12 +55,11 @@ void EndingScene::Update()
 
 void EndingScene::Render(HDC _dc)
 {
-	//TextOut();
 	SetTextColor(_dc, RGB(255, 255, 255));
 	HFONT hFont = CreateFont(m_iFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
 			CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, L"DungGeunMo");
-	SelectObject(_dc, hFont); 
-	AddFontResourceW(L"Font\\DungGeunMo.ttf");
+	SelectObject(_dc, hFont);
+
 	HWND hWnd = Core::GetInst()->GetHwnd();
 	RECT rect;
 	RECT rectBackGround;
@@ -67,7 +68,6 @@ void EndingScene::Render(HDC _dc)
 
 	// 배경 색상으로 채우기
 	FillRect(_dc, &rectBackGround, g_hbrBackground);
-
 
 	GetClientRect(hWnd, &rect);
 
