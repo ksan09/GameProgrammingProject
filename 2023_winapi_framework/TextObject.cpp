@@ -18,7 +18,7 @@ void TextObject::Render(HDC _dc)
 		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, L"DungGeunMo");
 	SelectObject(_dc, hFont);
 
-	AddFontResourceW(L"DungGeunMo");
+	AddFontResourceW(L"Font\\DungGeunMo.ttf");
 
 	SetBkMode(_dc, TRANSPARENT);
 	SIZE textSize;
