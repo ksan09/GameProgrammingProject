@@ -86,6 +86,7 @@ Boss1::~Boss1()
 
 void Boss1::Update()
 {
+	EventMgr::GetInst()->SceneChange(L"Ending_Scene");
 	GetAnimator()->Update();
 
 	//Á×À» ¶§ ¾À ³Ñ±â±â ¾ÈµÊ
