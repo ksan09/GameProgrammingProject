@@ -98,8 +98,11 @@ private:
 	void SpawnObject();
 	void SpawnBullet();
 private:
+	Object* m_pOwner;
+private:
 	float m_fCurTime;
 	float m_fBulletTime;
 	bool m_bSpawn;
+	bool m_isRight;
 	int m_iSpawnCount;
 };

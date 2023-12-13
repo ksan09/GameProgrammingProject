@@ -122,6 +122,7 @@ NODE_STATE Boss2Pattern1Node::OnUpdate()
 	if (m_fCurTime >= .5f && !m_bSpikeSpawn)
 	{
 		m_bSpikeSpawn = true;
+		ResMgr::GetInst()->Play(L"SpikeUp");
 		Spike* pSpike = new Spike(m_fWaitSpikeDelete);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pSpike, OBJECT_GROUP::OBJ);
 	}
@@ -214,7 +215,7 @@ void Boss2Pattern2Node::SpawnBullet()
 	ResMgr::GetInst()->Play(L"Bullet");
 
 	Vec2 pos = m_pOwner->GetPos();
-	Vec2 dir[3] = { Vec2(-1.5f,0.f), Vec2(1.5f,0.f) };
+	Vec2 dir[2] = { Vec2(-1.5f,0.f), Vec2(1.5f,0.f) };
 
 
 	dir[0].x += .25f * m_iCurShootCount;
@@ -250,9 +251,11 @@ void Boss2Pattern2Node::SpawnObject()
 }
 
 Boss2Pattern3Node::Boss2Pattern3Node(Object* owner, Object* target)
-	: m_fCurTime(0.f)
+	: m_pOwner(owner)
+	, m_fCurTime(0.f)
 	, m_fBulletTime(0.f)
 	, m_bSpawn(false)
+	, m_isRight(false)
 	, m_iSpawnCount(0)
 {
 }
@@ -267,6 +270,7 @@ void Boss2Pattern3Node::OnStart()
 	m_fBulletTime = 0;
 	m_iSpawnCount = 0;
 	m_bSpawn = false;
+	m_isRight = m_pOwner->GetPos().x > (WINDOW_WIDTH / 2);
 }
 
 NODE_STATE Boss2Pattern3Node::OnUpdate()
@@ -315,8 +319,12 @@ void Boss2Pattern3Node::SpawnObject()
 
 void Boss2Pattern3Node::SpawnBullet()
 {
+	ResMgr::GetInst()->Play(L"Bullet");
+	float pos = (m_isRight ? 0 : WINDOW_WIDTH);
+	float speed = (m_isRight ? 400 : -400);
+
 	Bullet* bullet = new Bullet;
-	bullet->SetPos(Vec2(0, WINDOW_HEIGHT / 2 + 175));
-	bullet->GetRigidbody2D()->SetVelocity(Vec2(400, 0));
+	bullet->SetPos(Vec2(pos, WINDOW_HEIGHT / 2 + 175.f));
+	bullet->GetRigidbody2D()->SetVelocity(Vec2(speed, 0.f));
 	SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 }

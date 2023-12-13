@@ -71,7 +71,7 @@ void Start_Scene::Update()
 			break;
 		}
 	}
-	else if (onGameRule && KEY_DOWN(KEY_TYPE::ESC))
+	else if (onGameRule && KEY_DOWN(KEY_TYPE::ESC) || KEY_DOWN(KEY_TYPE::LBUTTON))
 		onGameRule = false;
 
 	if (onGameRule)
