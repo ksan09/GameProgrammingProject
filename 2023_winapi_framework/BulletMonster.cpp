@@ -97,17 +97,17 @@ void BulletMonster::SpawnBullet()
 	m_bDir = !m_bDir;
 
 	ResMgr::GetInst()->Play(L"Bullet");
-	Vec2 widthDir[4] = { Vec2(1,0), Vec2(0,1) ,Vec2(-1,0) , Vec2(0,-1) };
-	Vec2 heightDir[4] = { Vec2(1,1), Vec2(-1,1), Vec2(-1,-1), Vec2(1,-1) };
+	Vec2 crossDir[4] = { Vec2(1,0), Vec2(0,1) ,Vec2(-1,0) , Vec2(0,-1) };
+	Vec2 slantCrossDir[4] = { Vec2(1,1), Vec2(-1,1), Vec2(-1,-1), Vec2(1,-1) };
 
 	for (int i = 0; i < 4; i++)
 	{
 		Bullet* bullet = new Bullet;
 		bullet->SetPos(this->GetPos());
 		if (m_bDir)
-			bullet->GetRigidbody2D()->SetVelocity(widthDir[i] * 300.f);
+			bullet->GetRigidbody2D()->SetVelocity(crossDir[i] * 300.f);
 		else
-			bullet->GetRigidbody2D()->SetVelocity(heightDir[i] * 300.f);
+			bullet->GetRigidbody2D()->SetVelocity(slantCrossDir[i] * 300.f);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(bullet, OBJECT_GROUP::OBJ);
 	}
 }
