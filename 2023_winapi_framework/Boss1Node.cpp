@@ -107,6 +107,7 @@ void BoundMonsterSpawnPattern1Node1::SpawnBullet()
 	if (m_pTarget == nullptr)
 		return;
 
+	ResMgr::GetInst()->Play(L"Bullet");
 	Vec2 pos = m_pOwner->GetPos();
 	pos.y -= 30;
 
@@ -159,10 +160,13 @@ void JumpNode::OnStart()
 	m_pRb->SetVelocity({ vVelo.x, -800.f });
 
 
+	ResMgr::GetInst()->Play(L"Jump");
 }
 
 NODE_STATE JumpNode::OnUpdate()
 {
+
+
 	m_fDis = m_vEndPos->GetPos().x - m_pOwner->GetPos().x;
 
 	if (m_fDis <= 0)
