@@ -33,11 +33,6 @@ Player::Player()
 
 	SetName(L"Player");
 
-	//m_pTex = new Texture;
-	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
-	//strFilePath += L"Texture\\plane.bmp";
-	//m_pTex->Load(strFilePath);
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\player.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(16.f,30.f));
