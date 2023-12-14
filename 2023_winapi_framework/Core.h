@@ -36,6 +36,10 @@ public:
 	{
 		return m_hDC;
 	}
+	const HDC& GetBackDC() const
+	{
+		return m_hbackDC;
+	}
 	const HBRUSH& GetBrush(BRUSH_TYPE _eType)
 	{
 		return m_arrBrush[(UINT)_eType];

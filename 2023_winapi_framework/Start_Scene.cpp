@@ -41,7 +41,14 @@ void Start_Scene::Init()
 	}
 	AddObject(PopUp, OBJECT_GROUP::OBJ);
 	
-
+	HDC _dc = Core::GetInst()->GetBackDC();
+	SetTextColor(_dc, RGB(0, 0, 0));
+	SetBkMode(_dc, TRANSPARENT);
+	HFONT hFont = CreateFont(15, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, L"DungGeunMo");
+	SelectObject(_dc, hFont);
+	//
+	//DeleteObject(hFont);
 	//// 사운드 세팅
 	//ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	//ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
@@ -88,7 +95,9 @@ void Start_Scene::Update()
 
 void Start_Scene::Render(HDC _dc)
 {
+	
 	Scene::Render(_dc);
+	
 }
 
 void Start_Scene::Release()
