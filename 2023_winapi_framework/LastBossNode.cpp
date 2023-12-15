@@ -167,7 +167,8 @@ void LastBossPatternNode2::OnStart()
 	m_isAppear = false;
 
 	Danger* danger = new Danger();
-	SceneMgr::GetInst()->GetCurScene()->AddObject(danger, OBJECT_GROUP::EFFECT);
+	SceneMgr::GetInst()->GetCurScene()->
+		AddObject(danger, OBJECT_GROUP::EFFECT);
 }
 
 NODE_STATE LastBossPatternNode2::OnUpdate()
@@ -208,8 +209,6 @@ NODE_STATE LastBossPatternNode2::OnUpdate()
 	{
 		if (m_fCurTime >= 0.8f)
 		{
-
-
 			m_isDelay = true;
 			m_pOwner->GetAnimator()->PlayAnim(L"LB_Move", true);
 			m_fCurTime = 0.f;

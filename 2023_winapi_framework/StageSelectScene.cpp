@@ -73,7 +73,7 @@ void StageSelectScene::Init()
 	pBlock4->SetBlock((Vec2(96.f, 32.f)));
 	pBlock4->SetSize(3);
 	AddObject(pBlock4, OBJECT_GROUP::OBJ);
-
+ 
 	if (SaveLoadMgr::GetInst()->BossStage())
 	{
 		Gate* pGateEnd = new Gate(1);

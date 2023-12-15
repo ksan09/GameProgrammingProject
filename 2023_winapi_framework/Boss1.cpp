@@ -56,7 +56,6 @@ Boss1::Boss1(Object* target)
 
 
 	SequenceNode* pattern1SeqNode = new SequenceNode();
-	RandomPatternNode1* randPatternNode = new RandomPatternNode1();
 
 #pragma region 점프 노드
 
@@ -71,10 +70,9 @@ Boss1::Boss1(Object* target)
 	pattern1SeqNode->RegisterChild(jumpNode);
 	pattern1SeqNode->RegisterChild(pattern2);
 
-	randPatternNode->RegisterChild(pattern1SeqNode);
 
 	//여기에 AI짜서 넣어야 함
-	RepeatNode* rootNode = new RepeatNode(randPatternNode);
+	RepeatNode* rootNode = new RepeatNode(pattern1SeqNode);
 	m_pTree = new BehaviorTree(rootNode);
 }
 
